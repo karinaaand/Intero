@@ -38,8 +38,8 @@
      <nav>
       <ul class="hidden md:flex space-x-10 text-white text-sm font-normal select-none">
        <li>
-        <a class="text-yellow-400 hover:text-yellow-400" href="#">
-         Home
+        <a class="text-yellow-400 hover:text-yellow-400" href="{{ route('home') }}">
+            Home
         </a>
        </li>
        <li>
@@ -53,8 +53,8 @@
         </a>
        </li>
        <li>
-        <a class="hover:text-yellow-400" href="#">
-         E-Learning
+        <a class="text-yellow-400 hover:text-yellow-400" href="{{ route('elearning.beranda') }}">
+            E-Learning
         </a>
        </li>
        <li>
