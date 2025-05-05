@@ -27,5 +27,5 @@ Route::prefix('elearning')->group(function () {
     Route::get('/mapel', function () {
         return view('elearning.mapel');
     })->name('elearning.mapel');
-    
+
 });
