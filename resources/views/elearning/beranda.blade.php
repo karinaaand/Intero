@@ -1,68 +1,32 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>LMS SATAS</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
   <style>
-    /* Hide mobile menu by default */
-    .mobile-menu {
-      display: none;
-    }
-
-    /* Show mobile menu when active */
-    .mobile-menu.active {
-      display: block;
+    /* Custom underline for active nav item */
+    .active-underline {
+      border-bottom-width: 2px;
+      border-bottom-color: #2563eb; /* Tailwind blue-600 */
     }
   </style>
 </head>
-<body class="bg-white text-black font-sans">
-  <header class="border-b border-black/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-      <div class="flex flex-wrap items-center justify-between">
-        <div class="font-bold text-base">
-          LMS SATAS
+<body class="bg-white">
+    <nav class="flex items-center border-b border-gray-200 px-4 py-3">
+        <div class="flex items-center pl-32 space-x-8">
+            <div class="font-sans font-semibold text-black text-lg sm:text-xl">LMS SATAS</div>
+            <a href="#" class="font-sans text-black text-base hover:underline">Home</a>
+            <a href="#" class="font-sans text-black text-base active-underline pb-1">E-Learning</a>
         </div>
-
-        <!-- Mobile menu button -->
-        <button id="mobile-menu-button" class="md:hidden flex items-center px-3 py-2 border rounded text-black border-black hover:text-blue-600 hover:border-blue-600">
-          <i class="fas fa-bars"></i>
-        </button>
-
-        <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center space-x-6">
-          <nav class="flex space-x-6 text-sm">
-            <a class="text-black hover:text-blue-600 transition-colors" href="#">
-              Home
-            </a>
-            <a class="text-black border-b-2 border-blue-600 pb-1 hover:text-blue-600 transition-colors" href="#">
-              E-Learning
-            </a>
-          </nav>
-          <a class="text-blue-600 text-sm hover:text-yellow-400 transition-colors ml-6" href="{{ route('elearning.login') }}">
-            Log in
-          </a>
+        <div class="ml-auto pr-4">
+            <a href="{{ route('elearning.login') }}" class="font-sans text-blue-600 text-sm">Log in</a>
         </div>
-
-        <!-- Mobile Navigation -->
-        <div id="mobile-menu" class="mobile-menu w-full md:hidden mt-2">
-          <div class="flex flex-col space-y-2 pb-3">
-            <a class="text-black hover:text-blue-600 transition-colors py-2" href="#">
-              Home
-            </a>
-            <a class="text-black border-b-2 border-blue-600 pb-1 hover:text-blue-600 transition-colors py-2" href="#">
-              E-Learning
-            </a>
-            <a class="text-blue-600 text-sm hover:text-yellow-400 transition-colors py-2 mt-2" href="{{ route('elearning.login') }}">
-              Log in
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+      </nav>
   <main class="p-4 sm:p-6 max-w-7xl mx-auto">
     <h2 class="font-bold mb-4 text-base sm:text-lg">
       Google Classroom
@@ -165,6 +129,11 @@
         mobileMenu.classList.toggle('active');
       });
     });
+
+     // Toggle mobile menu
+     document.getElementById("mobile-menu-button").addEventListener("click", function () {
+        document.getElementById("mobile-menu").classList.toggle("active");
+      });
   </script>
 </body>
 </html>

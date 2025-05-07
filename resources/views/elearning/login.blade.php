@@ -1,104 +1,120 @@
+</html>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <title>Google Sign In</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-    }
-  </style>
-</head>
-<body class="bg-white flex justify-center items-center min-h-screen p-4">
-  <div class="w-full max-w-md border border-gray-300 rounded-lg shadow-sm hover:shadow-md transition-shadow select-none" style="color: #202124;">
-    <!-- Top bar -->
-    <div class="flex items-center gap-2 px-4 py-2 border-b border-gray-300 rounded-t-lg">
-      <img alt="Google G logo in color" class="block w-[18px] h-[18px]" src="https://storage.googleapis.com/a1aa/image/9d22e930-dc00-4954-c62a-39513c7bc4e4.jpg"/>
-      <span class="text-gray-700 text-xs font-normal">
-        Sign in with Google
-      </span>
-    </div>
-    <!-- Main content -->
-    <div class="px-4 sm:px-8 pt-6 sm:pt-8 pb-4 sm:pb-6 text-center">
-      <h1 class="text-base sm:text-lg font-normal text-[#202124] mb-1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Google Sign In</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col items-center justify-center min-h-screen bg-white text-[#3c4043] p-4">
+
+    <!-- Kontainer utama dengan border -->
+    <div class="w-full max-w-sm border border-gray-300 rounded-xl p-6 text-sm mb-4">
+      <!-- Logo dan judul -->
+      <div class="flex items-center space-x-2 mb-6">
+        <img
+            src="https://developers.google.com/identity/images/g-logo.png"
+            alt="Google G logo"
+            class="w-5 h-5"
+        />
+        <span class="text-[14px]">Sign in with Google</span>
+      </div>
+
+      <!-- Heading -->
+      <h1 class="text-center text-lg font-normal text-[#202124] mb-1">
         Choose an account
       </h1>
-      <p class="text-xs text-[#3c4043] mb-4 sm:mb-6">
+      <p class="text-center text-sm mb-6">
         to continue to
-        <a class="text-blue-600 font-normal hover:underline" href="#">
-          LMS SATAS
-        </a>
+        <a href="#" class="text-blue-600 hover:underline">LMS SATAS</a>
       </p>
-      <!-- Account 1 -->
-      <a href="{{ route('elearning.mapel') }}" class="flex items-center gap-3 mb-4 hover:bg-gray-100 px-2 py-2 rounded-md transition-colors">
-        <div aria-label="Account initial A" class="flex justify-center items-center rounded-full bg-purple-700 text-white font-medium text-sm w-8 h-8">
-          A
-        </div>
-        <div class="flex flex-col text-left w-full border-b border-gray-300 pb-3">
-          <span class="text-xs font-semibold text-[#202124]">
-            Account Name
-          </span>
-          <span class="text-xs text-[#5f6368]">
-            email@gmail.com
-          </span>
-        </div>
-      </a>
 
-      <!-- Account 2 -->
-      <a href="{{ route('elearning.mapel') }}" class="flex items-center gap-3 mb-6 hover:bg-gray-100 px-2 py-2 rounded-md transition-colors">
-        <div aria-label="Account initial A" class="flex justify-center items-center rounded-full bg-purple-700 text-white font-medium text-sm w-8 h-8">
-          A
-        </div>
-        <div class="flex flex-col text-left w-full border-b border-gray-300 pb-3">
-          <span class="text-xs font-semibold text-[#202124]">
-            Account Name
-          </span>
-          <span class="text-xs text-[#5f6368]">
-            email@gmail.com
-          </span>
-        </div>
-      </a>
-      <!-- Use another account -->
-      <button class="flex items-center gap-2 text-xs text-[#3c4043] w-full border-b border-gray-300 pb-3 hover:bg-gray-100 rounded-sm transition-colors px-2 py-1" type="button">
-        <i class="fas fa-user-circle text-base"></i>
-        Use another account
-      </button>
-      <!-- Info text -->
-      <p class="mt-4 sm:mt-6 text-xs text-[#5f6368] leading-tight">
-        To continue, Google will share your name, email address, language preference, and profile picture with Company. Before using this app, you can review Company's
-        <a class="text-blue-600 hover:underline" href="#">
-          privacy policy
+      <!-- Akun-akun -->
+      <div class="space-y-3 mb-6">
+        <!-- Akun 1 -->
+        <a
+          href="{{ route('elearning.mapel') }}"
+          class="w-full flex items-center space-x-3 border border-gray-300 rounded-md px-3 py-2 hover:bg-gray-100 transition"
+        >
+          <div
+            class="flex items-center justify-center rounded-full bg-[#673ab7] text-white w-8 h-8 text-sm font-medium"
+          >
+            A
+          </div>
+          <div class="flex-1 text-left">
+            <div class="text-sm text-[#202124] font-medium">Account Name</div>
+            <div class="text-xs text-gray-600">email@gmail.com</div>
+          </div>
         </a>
-        and
-        <a class="text-blue-600 hover:underline" href="#">
-          terms of service
-        </a>.
+
+        <!-- Akun 2 -->
+        <a
+          href="{{ route('elearning.mapel') }}"
+          class="w-full flex items-center space-x-3 border border-gray-300 rounded-md px-3 py-2 hover:bg-gray-100 transition"
+        >
+          <div
+            class="flex items-center justify-center rounded-full bg-[#673ab7] text-white w-8 h-8 text-sm font-medium"
+          >
+            A
+          </div>
+          <div class="flex-1 text-left">
+            <div class="text-sm text-[#202124] font-medium">Account Name</div>
+            <div class="text-xs text-gray-600">email@gmail.com</div>
+          </div>
+        </a>
+
+        <!-- Gunakan akun lain -->
+        <button
+          type="button"
+          class="w-full flex items-center space-x-3 border border-gray-300 rounded-md px-3 py-2 hover:bg-gray-100 transition focus:outline-none"
+        >
+          <div
+            class="flex items-center justify-center w-8 h-8 text-gray-600"
+          >
+            <i class="fas fa-user-circle text-xl"></i>
+          </div>
+          <div class="flex-1 text-left text-sm text-[#3c4043]">
+            Use another account
+          </div>
+        </button>
+      </div>
+
+      <!-- Catatan kebijakan -->
+      <p class="text-xs text-gray-600 leading-snug mb-2">
+        To continue, Google will share your name, email address, language
+        preference, and profile picture with Company. Before using this app, you
+        can review Company’s
+        <a href="#" class="text-blue-600 hover:underline">privacy policy</a> and
+        <a href="#" class="text-blue-600 hover:underline">terms of service</a>.
       </p>
     </div>
-    <!-- Footer -->
-    <div class="flex flex-col sm:flex-row justify-between items-center text-xs text-[#5f6368] border-t border-gray-300 px-4 py-3 rounded-b-lg">
-      <div class="flex items-center gap-1 cursor-pointer select-none mb-2 sm:mb-0">
-        English (United States)
-        <svg aria-hidden="true" class="w-3 h-3 text-[#5f6368]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
+
+    <!-- Footer di luar border -->
+    <div class="flex justify-between w-full max-w-sm text-xs text-gray-600">
+      <div class="flex items-center space-x-1 cursor-pointer">
+        <span>English (United States)</span>
+        <i class="fas fa-caret-down text-xs"></i>
       </div>
-      <div class="flex gap-4 sm:gap-6">
-        <a class="hover:underline" href="#">
-          Help
-        </a>
-        <a class="hover:underline" href="#">
-          Privacy
-        </a>
-        <a class="hover:underline" href="#">
-          Terms
-        </a>
+      <div class="flex space-x-4">
+        <a href="#" class="hover:underline">Help</a>
+        <a href="#" class="hover:underline">Privacy</a>
+        <a href="#" class="hover:underline">Terms</a>
       </div>
     </div>
-  </div>
-</body>
+
+  </body>
 </html>
