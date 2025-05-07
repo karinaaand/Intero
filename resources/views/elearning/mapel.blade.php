@@ -10,18 +10,22 @@
   />
 </head>
 <body class="bg-white text-black font-sans">
-  <header class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
-    <div class="font-bold text-base">LMS SATAS</div>
-    <nav class="flex space-x-6 text-sm">
-      <a href="#" class="text-black">Home</a>
-      <a href="#" class="text-black border-b-2 border-blue-600 pb-1">E-Learning</a>
-    </nav>
-    <div class="text-blue-700 text-sm flex items-center cursor-pointer select-none">
-      <span>Danial Abror</span>
-      <i class="fas fa-chevron-down ml-1 text-xs"></i>
-    </div>
-  </header>
+    <header class="border-b border-gray-200">
+        <div class="container mx-auto flex items-center justify-between px-6 py-4">
+          <!-- Kiri -->
+          <div class="flex items-center space-x-8">
+            <div class="font-sans font-semibold text-black text-lg sm:text-xl">LMS SATAS</div>
+            <a href="#" class="font-sans text-black text-base hover:underline">Home</a>
+            <a href="#" class="font-sans text-black text-base pb-1 border-b-2 border-blue-600">E-Learning</a>
+          </div>
 
+          <!-- Kanan -->
+          <div class="text-blue-700 text-sm flex items-center cursor-pointer select-none">
+            <span>Danial Abror</span>
+            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+          </div>
+        </div>
+      </header>
   <main class="px-6 py-6 max-w-[1200px] mx-auto">
     <h2 class="font-semibold text-base mb-4">Google Classroom</h2>
 

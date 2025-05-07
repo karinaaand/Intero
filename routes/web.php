@@ -14,6 +14,12 @@ Route::prefix('elearning')->group(function () {
         return view('elearning.beranda');
     })->name('elearning.beranda');
 
+
+    Route::get('/connect', function () {
+        return view('elearning.connect');
+    })->name('elearning.connect');
+
+
     // Login ke Google Classroom
     Route::get('/login', function () {
         return view('elearning.login');

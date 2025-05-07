@@ -24,7 +24,7 @@
             <a href="#" class="font-sans text-black text-base active-underline pb-1">E-Learning</a>
         </div>
         <div class="ml-auto pr-4">
-            <a href="{{ route('elearning.login') }}" class="font-sans text-blue-600 text-sm">Log in</a>
+            <a href="{{ route('elearning.connect') }}" class="font-sans text-blue-600 text-sm">Log in</a>
         </div>
       </nav>
   <main class="p-4 sm:p-6 max-w-7xl mx-auto">
