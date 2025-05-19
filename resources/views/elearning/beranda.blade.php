@@ -20,8 +20,8 @@
     <nav class="flex items-center border-b border-gray-200 px-4 py-3">
         <div class="flex items-center pl-32 space-x-8">
             <div class="font-sans font-semibold text-black text-lg sm:text-xl">LMS SATAS</div>
-            <a href="#" class="font-sans text-black text-base hover:underline">Home</a>
-            <a href="#" class="font-sans text-black text-base active-underline pb-1">E-Learning</a>
+            <a href="{{ route('home') }}" class="font-sans text-black text-base hover:underline">Home</a>
+            <a href="{{ route('elearning.beranda') }}" class="font-sans text-black text-base active-underline pb-1">E-Learning</a>
         </div>
         <div class="ml-auto pr-4">
             <a href="{{ route('elearning.connect') }}" class="font-sans text-blue-600 text-sm">Log in</a>
