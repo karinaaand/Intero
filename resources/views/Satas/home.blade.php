@@ -44,12 +44,10 @@
               src="//upload.wikimedia.org/wikipedia/id/thumb/4/44/Logo_SMAN_1_Tasikmalaya.png/250px-Logo_SMAN_1_Tasikmalaya.png"
             />
             <div class="text-white text-xs leading-tight font-semibold select-none">
-              <p>SMA NEGERI 1 TASIKMALAYA</p>
-              <p class="font-normal text-xs leading-tight mt-0.5">
-                Jl. Rumah Sakit No.28 Empangsari Tawang Kota
-                <br class="hidden sm:block"/>
-                Tasikmalaya
-              </p>
+             <div class="text-left md:text-left text-sm leading-snug">
+                <p class="font-bold uppercase">SMA NEGERI 1 TASIKMALAYA</p>
+                <p>Jl. Rumah Sakit No.28 Empangsari Tawang Kota<br/>Tasikmalaya</p>
+            </div>
             </div>
           </div>
 
@@ -106,14 +104,15 @@
         </div>
       </div>
       <!-- Centered text -->
-      <div class="flex-grow flex flex-col justify-center items-center px-4 sm:px-6 text-center">
-        <h1 class="text-white font-semibold text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight max-w-xs sm:max-w-lg">
-          Selamat Datang di SMA Negeri 1 Tasikmalaya
+    <div class="flex-grow flex flex-col justify-center items-center px-4 sm:px-6 text-center">
+        <h1 class="text-white text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight">
+            Selamat Datang di SMA Negeri Tasikmalaya
         </h1>
-        <p class="text-white text-xs sm:text-sm mt-2 sm:mt-4 font-semibold max-w-xs sm:max-w-sm">
-          Unggul dalam Prestasi, Luhur dalam Budi Pekerti
+        <p class="text-white text-2xl sm:text-2xl mt-4 font-normal">
+        Unggul dalam Prestasi, Luhur dalam Budi Pekerti
         </p>
-      </div>
+    </div>
+
     </div>
   </header>
 
