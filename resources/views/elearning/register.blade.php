@@ -10,9 +10,20 @@
 <body class="bg-white flex items-center justify-center min-h-screen">
 
   <div class="max-w-md w-full">
-    <h2 class="text-center font-bold text-xl mb-6">Log in to LMS SATAS</h2>
+    <h2 class="text-center font-bold text-xl mb-6">Sign Up to LMS SATAS</h2>
 
     <form class="border border-black rounded-lg p-6 space-y-5 shadow-sm">
+      <!-- Username-->
+      <div>
+        <label for="email" class="block font-semibold mb-1 text-black">Username</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          class="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-black"
+        />
+      </div>
+
       <!-- Email -->
       <div>
         <label for="email" class="block font-semibold mb-1 text-black">Email</label>
@@ -35,11 +46,25 @@
         />
       </div>
 
-      <!-- Login Button -->
-      <a href="{{ route('elearning.mapel') }}"
+      <!-- Confirm Password -->
+      <div>
+        <label for="password" class="block font-semibold mb-1 text-black">Confirm Password</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          class="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-black"
+        />
+      </div>
+
+
+      <!-- Sign Up Button -->
+
+      <a href="{{ route('elearning.login') }}"
         class="block text-center w-full bg-green-700 text-white font-semibold rounded-md py-2 shadow-[0_4px_0_rgba(0,0,0,0.2)] hover:bg-green-800 transition-colors">
-      Login
+        Sign Up
       </a>
+
 
       <!-- Divider -->
       <hr class="border-t border-gray-300"/>

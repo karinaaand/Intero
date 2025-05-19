@@ -1,35 +1,52 @@
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LMS SATAS</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-  />
-</head>
-<body class="bg-white text-black font-sans">
-    <header class="border-b border-gray-200">
-        <div class="container mx-auto flex items-center justify-between px-6 py-4">
-          <!-- Kiri -->
-          <div class="flex items-center space-x-8">
-            <div class="font-sans font-semibold text-black text-lg sm:text-xl">LMS SATAS</div>
-            <a href="#" class="font-sans text-black text-base hover:underline">Home</a>
-            <a href="#" class="font-sans text-black text-base pb-1 border-b-2 border-blue-600">E-Learning</a>
-          </div>
 
-          <!-- Kanan -->
-          <div class="text-blue-700 text-sm flex items-center cursor-pointer select-none">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LMS SATAS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        /* Custom underline for active nav item */
+        .active-underline {
+            border-bottom-width: 2px;
+            border-bottom-color: #2563eb;
+            /* Tailwind blue-600 */
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+   <nav class="flex items-center justify-between border-b border-gray-200 px-32 py-3">
+        <!-- Bagian kiri -->
+        <div class="flex items-center space-x-8">
+            <div class="font-sans font-semibold text-black text-lg sm:text-xl">LMS SATAS</div>
+
+            <a href="{{ route('home') }}"
+                class="font-sans text-base pb-1 border-b-2 transition duration-200
+                {{ request()->routeIs('home') ? 'text-blue-600 border-blue-600' : 'text-black border-transparent' }}">
+                Home
+            </a>
+
+            <a href="{{ route('elearning.beranda') }}"
+                class="font-sans text-base pb-1 border-b-2 transition duration-200
+                {{ request()->routeIs('elearning.beranda') ? 'text-blue-600 border-blue-600' : 'text-black border-transparent' }}">
+                E-Learning
+            </a>
+        </div>
+
+        <!-- Bagian kanan -->
+        <div class="text-blue-700 text-sm flex items-center cursor-pointer select-none">
             <span>Danial Abror</span>
             <i class="fas fa-chevron-down ml-1 text-xs"></i>
-          </div>
         </div>
-      </header>
-  <main class="px-6 py-6 max-w-[1200px] mx-auto">
-    <h2 class="font-semibold text-base mb-4">Google Classroom</h2>
+    </nav>
+    <main class="p-4 sm:p-6 max-w-7xl mx-auto">
+        <h2 class="font-bold mb-4 text-base sm:text-lg">
+            Google Classroom
+        </h2>
 
-    <section class="border border-gray-300 rounded-lg p-4">
+	<section class="border border-gray-300 rounded-lg p-4">
       <a href="#" class="inline-flex items-center text-blue-700 text-sm font-semibold mb-6 select-none">
         <i class="fas fa-chevron-left mr-1"></i> Back
       </a>
@@ -225,6 +242,7 @@
         </div>
       </div>
     </section>
-  </main>
+
+    </main>
 </body>
 </html>
