@@ -2,9 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Halaman utama home-satas
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
 Route::get('/', function () {
-    return view('satas.home');
+    return view('Satas.home');
 })->name('home');
 
 // E-Learning
@@ -24,25 +34,17 @@ Route::prefix('elearning')->group(function () {
         return view('elearning.register');
     })->name('elearning.register');
 
-
     //Login ke Google Classroom
     Route::get('/login', function () {
         return view('elearning.login');
     })->name('elearning.login');
-
-    // Sign Up ke Google Classroom
-    Route::get('/register', function () {
-        return view('elearning.register');
-    })->name('elearning.register');
-
-
-    // Halaman mata pelajaran setelah login
-    // Route::get('/mapel', function () {
-    //     return view('elearning.mapel');
-    // })->middleware('auth')->name('elearning.mapel');
-
-    Route::get('/mapel', function () {
-        return view('elearning.mapel');
-    })->name('elearning.mapel');
-
+    
+    // Google callback route
+    Route::get('/google/callback', function () {
+        // This route will handle the redirect from Google OAuth
+        // The frontend will extract the token from the URL and store it
+        return view('elearning.callback');
+    })->name('elearning.google.callback');
 });
+
+

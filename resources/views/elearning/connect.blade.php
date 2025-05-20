@@ -1,4 +1,3 @@
-</html>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,6 +13,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
       body {
         font-family: "Roboto", sans-serif;
@@ -43,64 +43,18 @@
         <a href="#" class="text-blue-600 hover:underline">LMS SATAS</a>
       </p>
 
-      <!-- Akun-akun -->
-      <div class="space-y-3 mb-6">
-        <!-- Akun 1 -->
-        <a
-          href="{{ route('elearning.mapel') }}"
-          class="w-full flex items-center space-x-3 border border-gray-300 rounded-md px-3 py-2 hover:bg-gray-100 transition"
-        >
-          <div
-            class="flex items-center justify-center rounded-full bg-[#673ab7] text-white w-8 h-8 text-sm font-medium"
-          >
-            A
-          </div>
-          <div class="flex-1 text-left">
-            <div class="text-sm text-[#202124] font-medium">Account Name</div>
-            <div class="text-xs text-gray-600">email@gmail.com</div>
-          </div>
-        </a>
-
-        <!-- Akun 2 -->
-        <a
-          href="{{ route('elearning.mapel') }}"
-          class="w-full flex items-center space-x-3 border border-gray-300 rounded-md px-3 py-2 hover:bg-gray-100 transition"
-        >
-          <div
-            class="flex items-center justify-center rounded-full bg-[#673ab7] text-white w-8 h-8 text-sm font-medium"
-          >
-            A
-          </div>
-          <div class="flex-1 text-left">
-            <div class="text-sm text-[#202124] font-medium">Account Name</div>
-            <div class="text-xs text-gray-600">email@gmail.com</div>
-          </div>
-        </a>
-
-        <!-- Gunakan akun lain -->
-        <button
-          type="button"
-          class="w-full flex items-center space-x-3 border border-gray-300 rounded-md px-3 py-2 hover:bg-gray-100 transition focus:outline-none"
-        >
-          <div
-            class="flex items-center justify-center w-8 h-8 text-gray-600"
-          >
-            <i class="fas fa-user-circle text-xl"></i>
-          </div>
-          <div class="flex-1 text-left text-sm text-[#3c4043]">
-            Use another account
-          </div>
-        </button>
+      <!-- Loading indicator -->
+      <div id="loading" class="text-center py-4">
+        <p>Connecting to Google...</p>
       </div>
 
-      <!-- Catatan kebijakan -->
-      <p class="text-xs text-gray-600 leading-snug mb-2">
-        To continue, Google will share your name, email address, language
-        preference, and profile picture with Company. Before using this app, you
-        can review Company’s
-        <a href="#" class="text-blue-600 hover:underline">privacy policy</a> and
-        <a href="#" class="text-blue-600 hover:underline">terms of service</a>.
-      </p>
+      <!-- Error message -->
+      <div id="error-message" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 hidden"></div>
+
+      <!-- Connect button -->
+      <button id="connect-google" class="w-full mt-4 bg-blue-600 text-white py-2 px-4 rounded-md text-sm font-medium">
+        Connect to Google Classroom
+      </button>
     </div>
 
     <!-- Footer di luar border -->
@@ -116,5 +70,42 @@
       </div>
     </div>
 
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const connectGoogleBtn = document.getElementById('connect-google');
+        const errorMessage = document.getElementById('error-message');
+        const loading = document.getElementById('loading');
+        
+        // Backend API URL
+        const API_URL = 'http://localhost:8000/api';
+        
+        // Check if user is authenticated
+        const token = localStorage.getItem('auth_token');
+        if (!token) {
+          window.location.href = '{{ route("elearning.login") }}';
+          return;
+        }
+        
+        connectGoogleBtn.addEventListener('click', async function() {
+          try {
+            loading.classList.remove('hidden');
+            errorMessage.classList.add('hidden');
+            
+            const response = await axios.get(`${API_URL}/google/initiate`, {
+              headers: {
+                'Authorization': `Bearer ${token}`
+              }
+            });
+            
+            window.location.href = response.data.url;
+          } catch (error) {
+            loading.classList.add('hidden');
+            errorMessage.textContent = error.response?.data?.message || 'Failed to connect to Google. Please try again.';
+            errorMessage.classList.remove('hidden');
+          }
+        });
+      });
+    </script>
   </body>
 </html>
+
