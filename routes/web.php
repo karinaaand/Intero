@@ -24,10 +24,6 @@ Route::prefix('elearning')->group(function () {
         return view('elearning.beranda');
     })->name('elearning.beranda');
 
-    //Koneksi ke Google Classroom
-    Route::get('/connect', function () {
-        return view('elearning.connect');
-    })->name('elearning.connect');
 
     // Sign Up ke Google Classroom
     Route::get('/register', function () {
@@ -39,12 +35,20 @@ Route::prefix('elearning')->group(function () {
         return view('w.elearning.login');
     })->name('elearning.login');
 
-    // Google callback route
-    Route::get('/google/callback', function () {
-        // This route will handle the redirect from Google OAuth
-        // The frontend will extract the token from the URL and store it
-        return view('elearning.callback');
-    })->name('elearning.google.callback');
+
+
+    Route::get('/guru', function () {
+    return view('elearning.guru');
+    })->name('guru');
+
+    Route::get('/guru_create', function () {
+        return view('elearning.guru_create');
+    })->name('guru_create');
+
+    Route::get('/guru_people', function () {
+        return view('elearning.guru_people');
+    })->name('guru_people');
+
 });
 
 
