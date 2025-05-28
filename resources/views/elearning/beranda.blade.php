@@ -1,73 +1,8 @@
-{{--  @extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
-<nav class="flex items-center justify-between border-b border-gray-200 px-4 sm:px-6 lg:px-32 py-3">
-    <div class="flex items-center space-x-8">
-        <div class="font-sans font-semibold text-black text-lg sm:text-xl">LMS SATAS</div>
 
-        <a href="{{ route('home') }}"
-            class="font-sans text-base pb-1 border-b-2 transition duration-200
-            {{ request()->routeIs('home') ? 'text-blue-600 border-blue-600' : 'text-black border-transparent' }}">
-            Home
-        </a>
-
-        <a href="{{ route('elearning.beranda') }}"
-            class="font-sans text-base pb-1 border-b-2 transition duration-200
-            {{ request()->routeIs('elearning.beranda') ? 'text-blue-600 border-blue-600' : 'text-black border-transparent' }}">
-            E-Learning
-        </a>
-    </div>
-
-    <div class="flex items-center space-x-4">
-        <div id="user-name" class="font-sans text-sm">Loading...</div>
-        <button id="logout-btn" class="font-sans text-sm text-red-600 hover:text-red-800">Logout</button>
-    </div>
-</nav>
-
-<main class="p-4 sm:p-6 max-w-7xl mx-auto">
-
-    <h2 class="font-bold mb-4 text-base sm:text-lg">
-        Google Classroom
-    </h2>
-
-    <!-- Courses List -->
-    <section id="courses-container" class="bg-white rounded-lg border border-gray-200 p-3 sm:p-4 md:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-        <div id="loading-courses" class="col-span-full text-center py-10">
-            <p>Loading courses...</p>
-        </div>
-
-        <div id="no-courses" class="col-span-full text-center py-10 hidden">
-            <p class="text-gray-500">No courses found</p>
-        </div>
-
-        <!-- Course cards will be inserted here -->
-    </section>
-</main>
-@endsection
-
-@section('scripts')
-@endsection
-
-
-
-  --}}
-
-<!DOCTYPE html>
-<html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <title>Google Classroom</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter&amp;display=swap" rel="stylesheet"/>
-  <style>
-   body {
-      font-family: 'Inter', sans-serif;
-    }
-  </style>
- </head>
- <body class="bg-white text-black">
+<body class="bg-white text-black">
   <header class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
    <nav class="flex items-center space-x-8 text-sm font-semibold">
     <span>LMS SATAS</span>
@@ -220,7 +155,7 @@
     classForm.addEventListener('submit', (e) => {
         e.preventDefault();
         // Redirect ke URL /guru
-        window.location.href = '/guru';
+        window.location.href = '/guru_create';
     });
 
 
@@ -238,4 +173,12 @@
     });
   </script>
  </body>
-</html>
+@endsection
+
+@section('scripts')
+@endsection
+
+
+
+
+

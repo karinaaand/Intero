@@ -187,6 +187,8 @@
             }
         });
     </script>
-</body>
+@endsection
 
-</html>
+@section('scripts')
+@endsection
+
