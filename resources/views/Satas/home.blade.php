@@ -71,7 +71,7 @@
                   <a class="active:text-yellow-400 transition-colors" href="#">Berita</a>
                 </li>
                 <li>
-                  <a class="active:text-yellow-400 transition-colors" href="{{ route('elearning.beranda') }}">
+                  <a class="active:text-yellow-400 transition-colors" href="{{ route('elearning.login') }}">
                     E-Learning
                   </a>
                 </li>

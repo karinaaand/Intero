@@ -43,17 +43,17 @@
     <h2 class="font-bold mb-4 text-base sm:text-lg">
         Google Classroom
     </h2>
-    
+
     <!-- Courses List -->
     <section id="courses-container" class="bg-white rounded-lg border border-gray-200 p-3 sm:p-4 md:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         <div id="loading-courses" class="col-span-full text-center py-10">
             <p>Loading courses...</p>
         </div>
-        
+
         <div id="no-courses" class="col-span-full text-center py-10 hidden">
             <p class="text-gray-500">No courses found</p>
         </div>
-        
+
         <!-- Course cards will be inserted here -->
     </section>
 </main>
@@ -70,20 +70,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const coursesContainer = document.getElementById('courses-container');
     const loadingCoursesElement = document.getElementById('loading-courses');
     const noCoursesElement = document.getElementById('no-courses');
-    
+
     // Backend API URL
-    const API_URL = 'http://localhost:8000/api';
-    
+    const API_URL = 'http://localhost:8001/api';
+
     // Check if user is authenticated
     const token = localStorage.getItem('auth_token');
     if (!token) {
         window.location.href = '{{ route("elearning.login") }}';
         return;
     }
-    
+
     // Set token in axios headers
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    
+
     // Fetch user profile
     async function fetchUserProfile() {
         try {
@@ -95,12 +95,12 @@ document.addEventListener('DOMContentLoaded', function() {
             userNameElement.textContent = 'User';
         }
     }
-    
+
     // Check Google connection
     async function checkGoogleConnection() {
         try {
             const response = await axios.get(`${API_URL}/google/check-connection`);
-            
+
             if (response.data.connected) {
                 // Connected to Google
                 googleStatusElement.innerHTML = `
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 `;
                 connectGoogleBtn.classList.add('hidden');
                 refreshCoursesBtn.classList.remove('hidden');
-                
+
                 // Fetch courses
                 fetchCourses();
             } else {
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 `;
                 connectGoogleBtn.classList.remove('hidden');
                 refreshCoursesBtn.classList.add('hidden');
-                
+
                 // Show no courses message
                 loadingCoursesElement.classList.add('hidden');
                 noCoursesElement.classList.remove('hidden');
@@ -141,21 +141,21 @@ document.addEventListener('DOMContentLoaded', function() {
             refreshCoursesBtn.classList.add('hidden');
         }
     }
-    
+
     // Fetch courses
     async function fetchCourses() {
         try {
             loadingCoursesElement.classList.remove('hidden');
             noCoursesElement.classList.add('hidden');
-            
+
             const response = await axios.get(`${API_URL}/google/courses`);
             const courses = response.data;
-            
+
             if (courses.length > 0) {
                 // Clear previous courses
                 const courseElements = coursesContainer.querySelectorAll('.course-card');
                 courseElements.forEach(el => el.remove());
-                
+
                 // Add new course cards
                 courses.forEach(course => {
                     const courseCard = document.createElement('div');
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     `;
                     coursesContainer.appendChild(courseCard);
                 });
-                
+
                 loadingCoursesElement.classList.add('hidden');
             } else {
                 loadingCoursesElement.classList.add('hidden');
@@ -182,20 +182,20 @@ document.addEventListener('DOMContentLoaded', function() {
             noCoursesElement.classList.remove('hidden');
         }
     }
-    
+
     // Event listeners
     logoutBtn.addEventListener('click', function() {
         localStorage.removeItem('auth_token');
         localStorage.removeItem('user_id');
         window.location.href = '{{ route("elearning.login") }}';
     });
-    
+
     connectGoogleBtn.addEventListener('click', function() {
         window.location.href = '{{ route("elearning.connect") }}';
     });
-    
+
     refreshCoursesBtn.addEventListener('click', fetchCourses);
-    
+
     // Initial checks
     fetchUserProfile();
     checkGoogleConnection();

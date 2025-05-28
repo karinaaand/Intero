@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('Satas.home');
+    return view('satas.home');
 })->name('home');
 
 // E-Learning
@@ -38,7 +38,7 @@ Route::prefix('elearning')->group(function () {
     Route::get('/login', function () {
         return view('elearning.login');
     })->name('elearning.login');
-    
+
     // Google callback route
     Route::get('/google/callback', function () {
         // This route will handle the redirect from Google OAuth
