@@ -31,12 +31,12 @@ Route::prefix('elearning')->group(function () {
 
     // Sign Up ke Google Classroom
     Route::get('/register', function () {
-        return view('elearning.register');
+        return view('w.elearning.register');
     })->name('elearning.register');
 
     //Login ke Google Classroom
     Route::get('/login', function () {
-        return view('elearning.login');
+        return view('w.elearning.login');
     })->name('elearning.login');
 
     // Google callback route
