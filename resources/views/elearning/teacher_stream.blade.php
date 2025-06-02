@@ -63,6 +63,7 @@
                     <ul class="py-2">
                         <li>
                             <button
+                                onclick="window.location.href='{{ route('elearning.home') }}'"
                                 class="flex items-center w-full px-4 py-3 text-gray-900 text-sm font-normal hover:bg-blue-100">
                                 <i class="fas fa-home text-gray-500 w-5 mr-3 text-center"></i>
                                 <span>Home</span>

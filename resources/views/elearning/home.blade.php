@@ -98,12 +98,21 @@
             </h2>
 
             <form id="classForm">
-                <input id="className" type="text" placeholder="Class name (required)"
+                <input id="name" type="text" placeholder="Class name (required)"
                     class="w-full mb-4 px-4 py-3 bg-gray-200 placeholder-gray-500 text-gray-700 text-sm rounded-none border-b border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-600"
-                    required />
+                     />
                 <input id="section" type="text" placeholder="Section"
                     class="w-full mb-6 px-4 py-3 bg-gray-200 placeholder-gray-500 text-gray-700 text-sm rounded-none border-b border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-600" />
-                <div class="flex justify-end space-x-6 text-sm font-normal">
+                 <input id="description_heading" type="text" placeholder="Description Heading"
+                    class="w-full mb-4 px-4 py-3 bg-gray-200 placeholder-gray-500 text-gray-700 text-sm rounded-none border-b border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-600"
+                    />
+                    <input id="description" type="text" placeholder="Description"
+                    class="w-full mb-4 px-4 py-3 bg-gray-200 placeholder-gray-500 text-gray-700 text-sm rounded-none border-b border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-600"
+                    />
+                    <input id="room" type="text" placeholder="Room"
+                    class="w-full mb-4 px-4 py-3 bg-gray-200 placeholder-gray-500 text-gray-700 text-sm rounded-none border-b border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-600"
+                    />
+                    <div class="flex justify-end space-x-6 text-sm font-normal">
                     <button type="button" id="cancelBtn"
                         class="text-blue-600 hover:underline focus:outline-none">
                         Cancel
@@ -121,7 +130,7 @@
             </button>
         </div>
     </div>
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
         const modal = document.getElementById('modal');
         const openModalBtn = document.getElementById('openModalBtn');
