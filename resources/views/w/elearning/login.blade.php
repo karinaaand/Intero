@@ -40,33 +40,32 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
-    const baseUrl = "http://127.0.0.:8000/api";
+  const baseUrl = "{{ env('VITE_API_BASE_URL') }}";
 
   document.getElementById('login-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
 
-    try {
-      const response = await axios.post(`${baseUrl}/auth/login`, {
-        email,
-        password
-      });
+      try {
+          const response = await axios.post(`${baseUrl}/auth/login`, {
+              email,
+              password
+          });
 
-      const token = response.data.access_token;
-      localStorage.setItem('token', token);
+          const token = response.data.access_token;
+          localStorage.setItem('token', token);
 
-      // Redirect ke route elearning.home
-      window.location.href = "{{ route('elearning.home') }}";
+          // Redirect ke route elearning.beranda
+          window.location.href = "{{ route('elearning.home') }}";
 
-    } catch (error) {
-      console.error(error);
-      const message = error.response?.data?.message || 'Login failed';
-      const errorMessageDiv = document.getElementById('error-message');
-      errorMessageDiv.classList.remove('hidden');
-      errorMessageDiv.innerText = message;
-    }
+      } catch (error) {
+          console.error(error);
+          const message = error.response?.data?.message || 'Login failed';
+          const errorMessageDiv = document.getElementById('error-message');
+          errorMessageDiv.classList.remove('hidden');
+          errorMessageDiv.innerText = message;
+      }
   });
 </script>
-
 @endsection

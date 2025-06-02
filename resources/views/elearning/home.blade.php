@@ -177,6 +177,53 @@
             }
         });
     </script>
+
+<script>
+    const baseUrl = "{{ env('VITE_API_BASE_URL') }}";
+
+    function getToken() {
+        return localStorage.getItem('token');
+    }
+
+    async function fetchCourses() {
+        const token = getToken();
+
+        if (!token) {
+            console.error('Token not found');
+            return;
+        }
+
+        try {
+            const response = await axios.get(`${baseUrl}/courses`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            const courses = response.data;
+
+            // ✅ Tampilkan di console
+            console.log('✅ Data courses berhasil didapatkan:', courses);
+
+            // (Opsional) Tampilkan ke HTML
+            const container = document.getElementById('course-list');
+            container.innerHTML = '';
+            courses.forEach(course => {
+                const item = document.createElement('div');
+                item.classList.add('course-item');
+                item.innerText = `Course: ${course.name}`;
+                container.appendChild(item);
+            });
+
+        } catch (error) {
+            console.error('❌ Gagal mengambil data courses:', error.response?.data || error.message);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchCourses);
+</script>
+
+
 </body>
 
 </html>

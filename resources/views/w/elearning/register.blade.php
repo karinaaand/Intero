@@ -49,13 +49,14 @@
             </div>
             <hr class="border-t border-gray-300" />
             <div class="text-center mt-4">
-                <a href="{{ route('elearning.login') }}" class="text-sm text-indigo-600 hover:text-indigo-500">Already have an account? Log in</a>
+                <a href="{{ route('elearning.login') }}" class="text-sm text-indigo-600 hover:text-indigo-500">Already
+                    have an account? Log in</a>
             </div>
         </form>
     </div>
 
     <script>
-        const baseUrl = "http://127.0.0.1:8000/api";
+        const baseUrl = "{{ env('VITE_API_BASE_URL') }}";
 
     document.getElementById('register-form').addEventListener('submit', async function(e) {
       e.preventDefault();
