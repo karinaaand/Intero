@@ -33,7 +33,7 @@
         <div class="flex items-center space-x-8 text-sm">
             <a class="text-green-700 font-normal" href="#">Token Refresh</a>
             <button class="flex items-center text-blue-600 font-normal space-x-1">
-                <span>Guy Hawkins, S.Pd</span>
+                <span>Danial Abror</span>
                 <i class="fas fa-chevron-down text-xs"></i>
             </button>
         </div>
@@ -96,8 +96,7 @@
             <h2 id="modalTitle" class="text-gray-900 text-base font-normal mb-4">
                 Create class
             </h2>
-
-            <form id="classForm">
+<form id="classForm">
                 <input id="name" type="text" placeholder="Class name (required)"
                     class="w-full mb-4 px-4 py-3 bg-gray-200 placeholder-gray-500 text-gray-700 text-sm rounded-none border-b border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-600"
                      />
@@ -117,10 +116,11 @@
                         class="text-blue-600 hover:underline focus:outline-none">
                         Cancel
                     </button>
-                    <button id="createBtn" type="submit" disabled
-                        class="text-gray-400 cursor-default">
+                    <a href="{{ route('elearning.teacher.stream') }}"
+                       class="text-blue-600 hover:underline focus:outline-none">
                         Create
-                    </button>
+                    </a>
+
                 </div>
             </form>
 
@@ -130,7 +130,7 @@
             </button>
         </div>
     </div>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script>
         const modal = document.getElementById('modal');
         const openModalBtn = document.getElementById('openModalBtn');
@@ -187,6 +187,69 @@
         });
     </script>
 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    const modal = document.getElementById('modal');
+    const openModalBtn = document.getElementById('openModalBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const nameInput = document.getElementById('name');
+    const sectionInput = document.getElementById('section');
+    const descriptionInput = document.getElementById('description');
+    const descriptionHeadingInput = document.getElementById('description_heading');
+    const roomInput = document.getElementById('room');
+    const classForm = document.getElementById('classForm');
+    const createLink = document.querySelector('a[href="{{ route('elearning.teacher.stream') }}"]');
+
+    // Open modal
+    openModalBtn.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+        nameInput.value = '';
+        sectionInput.value = '';
+        descriptionInput.value = '';
+        descriptionHeadingInput.value = '';
+        roomInput.value = '';
+        updateCreateButtonState();
+    });
+
+    // Close modal
+    closeModalBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    cancelBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    // Close when clicking outside
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+        }
+    });
+
+    // Update create button state when inputs change
+    nameInput.addEventListener('input', updateCreateButtonState);
+    sectionInput.addEventListener('input', updateCreateButtonState);
+    descriptionInput.addEventListener('input', updateCreateButtonState);
+    descriptionHeadingInput.addEventListener('input', updateCreateButtonState);
+    roomInput.addEventListener('input', updateCreateButtonState);
+
+    function updateCreateButtonState() {
+        if (nameInput.value.trim() !== '') {
+            createLink.classList.remove('text-gray-400', 'cursor-default');
+            createLink.classList.add('text-blue-600', 'hover:underline', 'cursor-pointer');
+        } else {
+            createLink.classList.add('text-gray-400', 'cursor-default');
+            createLink.classList.remove('text-blue-600', 'hover:underline', 'cursor-pointer');
+        }
+    }
+
+    // Initialize button state
+    updateCreateButtonState();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     const baseUrl = "{{ env('VITE_API_BASE_URL') }}";
 
@@ -201,7 +264,6 @@
             console.error('Token not found');
             return;
         }
-        console.log(token)
 
         try {
             const response = await axios.get(`${baseUrl}/courses`, {
@@ -211,23 +273,19 @@
             });
 
             const courses = response.data;
-
-            // ✅ Tampilkan di console
             console.log('✅ Data courses berhasil didapatkan:', courses);
 
         } catch (error) {
             console.error('❌ Gagal mengambil data courses:', error.response?.data || error.message);
+            if (error.response?.status === 401) {
+                alert('Sesi telah berakhir. Silakan login kembali.');
+                window.location.href = "{{ route('elearning.login') }}";
+            }
         }
     }
 
     document.addEventListener('DOMContentLoaded', fetchCourses);
 </script>
-
-
-</body>
-
-</html>
-@endsection
 
 @section('scripts')
 @endsection
