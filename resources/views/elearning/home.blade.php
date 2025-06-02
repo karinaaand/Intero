@@ -192,6 +192,7 @@
             console.error('Token not found');
             return;
         }
+        console.log(token)
 
         try {
             const response = await axios.get(`${baseUrl}/courses`, {
@@ -204,16 +205,6 @@
 
             // ✅ Tampilkan di console
             console.log('✅ Data courses berhasil didapatkan:', courses);
-
-            // (Opsional) Tampilkan ke HTML
-            const container = document.getElementById('course-list');
-            container.innerHTML = '';
-            courses.forEach(course => {
-                const item = document.createElement('div');
-                item.classList.add('course-item');
-                item.innerText = `Course: ${course.name}`;
-                container.appendChild(item);
-            });
 
         } catch (error) {
             console.error('❌ Gagal mengambil data courses:', error.response?.data || error.message);
