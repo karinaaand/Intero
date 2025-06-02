@@ -71,25 +71,47 @@
                         <li class="border-t border-gray-200">
                             <div class="flex flex-col">
                                 <button
-                                    class="flex items-center justify-between w-full px-4 py-3 text-gray-900 text-sm font-normal hover:bg-blue-100 group"
+                                    class="flex items-center justify-between w-full px-4 py-2.5 text-gray-900 text-sm font-normal hover:bg-blue-100 group"
                                     id="teaching-btn">
                                     <div class="flex items-center">
                                         <i class="fas fa-chalkboard-teacher text-blue-600 w-5 mr-3 text-center"></i>
-                                        <span>Teaching</span>
+                                        <span class="truncate">Teaching</span>
                                     </div>
                                     <i class="fas fa-chevron-down text-xs text-gray-500 group-hover:text-gray-700 transform transition-transform duration-200"
                                         id="teaching-arrow"></i>
                                 </button>
                                 <div class="pl-4 hidden" id="teaching-dropdown">
                                     <button
-                                        class="flex items-center w-full px-4 py-2 text-gray-900 text-xs font-normal hover:bg-blue-100">
-                                        <i class="fas fa-eye text-gray-500 w-5 mr-3 text-center"></i>
-                                        <span>To Review</span>
+                                        class="flex items-center w-full px-3 py-2 text-gray-900 text-xs font-normal hover:bg-blue-100 rounded-lg teaching-class-btn">
+                                        <div
+                                            class="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-blue-600 text-white font-medium mr-2">
+                                            K
+                                        </div>
+                                        <span class="truncate">Kimia X MIPA 1</span>
                                     </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-t border-gray-200">
+                            <div class="flex flex-col">
+                                <button
+                                    class="flex items-center justify-between w-full px-4 py-2.5 text-gray-900 text-sm font-normal hover:bg-blue-100 group"
+                                    id="enrolled-btn">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-graduation-cap text-blue-600 w-5 mr-3 text-center"></i>
+                                        <span class="truncate">Enrolled</span>
+                                    </div>
+                                    <i class="fas fa-chevron-down text-xs text-gray-500 group-hover:text-gray-700 transform transition-transform duration-200"
+                                        id="enrolled-arrow"></i>
+                                </button>
+                                <div class="pl-4 hidden" id="enrolled-dropdown">
                                     <button
-                                        class="flex items-center w-full px-4 py-3 text-gray-900 text-xs font-normal hover:bg-blue-100">
-                                        <i class="fas fa-flask text-gray-500 w-5 mr-3 text-center"></i>
-                                        <span>Kimia X MIPA 1</span>
+                                        class="flex items-center w-full px-3 py-2 text-gray-900 text-xs font-normal hover:bg-blue-100 rounded-lg enrolled-class-btn">
+                                        <div
+                                            class="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-green-600 text-white font-medium mr-2">
+                                            K
+                                        </div>
+                                        <span class="truncate">Kelas X KIR 1</span>
                                     </button>
                                 </div>
                             </div>
@@ -99,20 +121,16 @@
 
                 <div class="flex-1 flex flex-col">
                     <div class="flex space-x-4 p-4 border-b border-gray-200">
-                        <a href="/guru"
-                            class="px-6 py-2 rounded-full border border-gray-400 text-gray-900 text-sm font-normal">
+                        <a href="{{ route('elearning.teacher.stream') }}" class="px-6 py-2 rounded-full border border-gray-400 text-blue-900 text-sm font-normal">
                             Stream
                         </a>
-                        <a href="/guru_create"
-                            class="px-6 py-2 rounded-full border border-blue-400 bg-blue-300 text-blue-900 text-sm font-normal">
+                        <a href="{{ route('elearning.teacher.coursework') }}" class="px-6 py-2 rounded-full border border-blue-400 bg-blue-300 text-gray-900 text-sm font-normal">
                             Classwork
                         </a>
-                        <a href="/guru_people"
-                            class="px-6 py-2 rounded-full border border-gray-400 text-gray-900 text-sm font-normal">
+                        <a href="{{ route('elearning.teacher.people') }}" class="px-6 py-2 rounded-full border border-gray-400 text-gray-900 text-sm font-normal">
                             People
                         </a>
-                        <a href="#grades"
-                            class="px-6 py-2 rounded-full border border-gray-400 text-gray-900 text-sm font-normal">
+                        <a href="{{ route('elearning.teacher.grades') }}" class="px-6 py-2 rounded-full border border-gray-400 text-gray-900 text-sm font-normal">
                             Grades
                         </a>
                     </div>
@@ -127,16 +145,16 @@
                             <!-- Modal Dropdown -->
                             <div id="modal"
                                 class="hidden absolute top-full left-0 mt-2 w-40 rounded-md border border-gray-300 bg-white shadow-sm flex flex-col space-y-1 p-2 z-50">
-                                <button type="button"
-                                    class="flex items-center space-x-2 px-3 py-2 text-gray-500 hover:text-gray-700 focus:outline-none">
+                                <a href="{{ route('elearning.teacher.coursework.assignment') }}"
+                                class="flex items-center space-x-2 px-3 py-2 text-gray-500 hover:text-gray-700 focus:outline-none">
                                     <i class="fas fa-external-link-alt text-lg"></i>
                                     <span class="text-sm font-normal">Assignment</span>
-                                </button>
-                                <button type="button"
-                                    class="flex items-center space-x-2 px-3 py-2 text-gray-500 hover:text-gray-700 focus:outline-none">
-                                    <i class="fas fa-book text-lg"></i>
-                                    <span class="text-sm font-normal">Material</span>
-                                </button>
+                                </a>
+                                <a href="{{ route('elearning.teacher.coursework.material') }}"
+                                class="flex items-center space-x-2 px-3 py-2 text-gray-500 hover:text-gray-700 focus:outline-none">
+                                    <i class="fas fa-external-link-alt text-lg"></i>
+                                    <span class="text-sm font-normal">Assignment</span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -187,7 +205,6 @@
             }
         });
     </script>
-@endsection
 
 @section('scripts')
 @endsection

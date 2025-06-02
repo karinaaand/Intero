@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <title>Google Classroom</title>
+    <title>LMS SATAS - Google Classroom</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter&amp;display=swap" rel="stylesheet" />
@@ -16,6 +16,17 @@
         html,
         body {
             height: 100%;
+        }
+
+        .bg-blue-50 {
+            background-color: #f0f7ff;
+        }
+
+        .truncate {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
         }
     </style>
 </head>
@@ -30,7 +41,7 @@
         <div class="flex items-center space-x-8 text-sm">
             <a class="text-green-700 font-normal" href="#">Token Refresh</a>
             <button class="flex items-center text-blue-600 font-normal space-x-1">
-               <span>Guy Hawkins, S.Pd</span>
+                <span>Guy Hawkins, S.Pd</span>
                 <i class="fas fa-chevron-down text-xs"></i>
             </button>
         </div>
@@ -44,7 +55,7 @@
                         <i class="fas fa-bars"></i>
                     </button>
                     <img alt="Google Classroom logo" class="w-5 h-5" height="20"
-                        src="https://storage.googleapis.com/a1aa/image/462926ac-071c-432d-8541-e45b01ea601f.jpg"
+                        src="https://storage.googleapis.com/a1aa/image/821aeb14-f07a-40e2-ef6e-ec5476e869bb.jpg"
                         width="20" />
                     <span>Google Classroom</span>
                 </div>
@@ -59,13 +70,13 @@
             </header>
 
             <div class="flex flex-1">
-                <nav class="w-44 border-r border-gray-200 bg-blue-50 rounded-bl-xl">
+                <nav class="w-52 border-r border-gray-200 bg-blue-50 rounded-bl-xl">
                     <ul class="py-2">
                         <li>
                             <button
-                                class="flex items-center w-full px-4 py-3 text-gray-900 text-sm font-normal hover:bg-blue-100">
+                                class="flex items-center w-full px-4 py-2.5 text-gray-900 text-sm font-normal hover:bg-blue-100">
                                 <i class="fas fa-home text-gray-500 w-5 mr-3 text-center"></i>
-                                <span>Home</span>
+                                <span class="truncate">Home</span>
                             </button>
                         </li>
                         <li class="border-t border-gray-200">
@@ -121,61 +132,65 @@
 
                 <div class="flex-1 flex flex-col">
                     <div class="flex space-x-4 p-4 border-b border-gray-200">
-                        <a href="{{ route('elearning.teacher.stream') }}"
+                        <a href="#"
+                            class="px-6 py-2 rounded-full border border-gray-400 text-gray-900 text-sm font-normal">
+                            Instruction
+                        </a>
+                        <a href="#"
                             class="px-6 py-2 rounded-full border border-blue-400 bg-blue-300 text-gray-900 text-sm font-normal">
-                            Stream
-                        </a>
-                        <a href="{{ route('elearning.teacher.coursework') }}"
-                            class="px-6 py-2 rounded-full border border-gray-400 text-gray-900 text-sm font-normal">
-                            Classwork
-                        </a>
-                        <a href="{{ route('elearning.teacher.people') }}"
-                            class="px-6 py-2 rounded-full border  border-gray-400 text-blue-900 text-sm font-normal">
-                            People
-                        </a>
-                        <a href="{{ route('elearning.teacher.grades') }}"
-                            class="px-6 py-2 rounded-full border border-gray-400 text-gray-900 text-sm font-normal">
-                            Grades
+                            Student Work
                         </a>
                     </div>
+                    <div class="px-6 py-4">
+                        <div class="flex justify-between items-center border-b border-gray-300 pb-2 mb-4">
+                            <h2 class="font-semibold text-lg">Assigned</h2>
+                            <span class="text-sm">4 Students</span>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex items-center space-x-4">
+                                <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center">
+                                    <i class="fas fa-user text-gray-600"></i>
+                                </div>
+                                <a href="{{ route('elearning.teacher.grades.student-work.submission', ['name' => 'anisa']) }}"
+                                    class="text-sm hover:underline">Anisa Tri Haryani</a>
+                            </li>
+                            <li class="flex items-center space-x-4">
+                                <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center">
+                                    <i class="fas fa-user text-gray-600"></i>
+                                </div>
+                                <a href="{{ route('elearning.teacher.grades.student-work.submission', ['name' => 'danial']) }}"
+                                    class="text-sm hover:underline">Danial Abror</a>
+                            </li>
+                            <li class="flex items-center space-x-4">
+                                <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center">
+                                    <i class="fas fa-user text-gray-600"></i>
+                                </div>
+                                <a href="{{ route('elearning.teacher.grades.student-work.submission', ['name' => 'eki']) }}"
+                                    class="text-sm hover:underline">Eki Oktaviana R.</a>
+                            </li>
+                            <li class="flex items-center space-x-4">
+                                <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center">
+                                    <i class="fas fa-user text-gray-600"></i>
+                                </div>
+                                <a href="{{ route('elearning.teacher.grades.student-work.submission', ['name' => 'fadillah']) }}"
+                                    class="text-sm hover:underline">Fadillah Aulia Rahman</a>
+                            </li>
+                        </ul>
 
-                    <div class="px-6 space-y-4"> <!-- Container dengan padding yang sama -->
-    <!-- Kotak biru -->
-    <div class="bg-blue-400 rounded-lg p-6 w-full mt-6">
-        <h1 class="text-white font-semibold text-xl leading-tight">
-            Kimia X MIPA 1
-        </h1>
-        <p class="text-white font-semibold text-sm mt-1">
-            Danial Abror
-        </p>
-    </div>
-
-    <!-- Kotak input -->
-    <div class="flex items-center bg-white border border-gray-300 rounded-lg px-4 py-3 space-x-4 w-full">
-        <div class="flex items-center justify-center rounded-full bg-purple-700 text-white w-8 h-8 text-sm font-semibold">
-            G
-        </div>
-        <input class="flex-1 text-xs text-gray-600 placeholder-gray-600 focus:outline-none"
-            placeholder="Announce Something to your class ..." type="text" />
-        <button aria-label="More options" class="text-gray-700">
-            <i class="fas fa-ellipsis-v"></i>
-        </button>
-    </div>
-</div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <script>
-        // Dropdown functionality
+        // Dropdown functionality for Teaching
         const teachingBtn = document.getElementById('teaching-btn');
         const teachingDropdown = document.getElementById('teaching-dropdown');
         const teachingArrow = document.getElementById('teaching-arrow');
 
         teachingBtn.addEventListener('click', () => {
             const isHidden = teachingDropdown.classList.contains('hidden');
-
             if (isHidden) {
                 teachingDropdown.classList.remove('hidden');
                 teachingArrow.classList.add('rotate-180');
@@ -183,6 +198,36 @@
                 teachingDropdown.classList.add('hidden');
                 teachingArrow.classList.remove('rotate-180');
             }
+        });
+
+        // Dropdown functionality for Enrolled
+        const enrolledBtn = document.getElementById('enrolled-btn');
+        const enrolledDropdown = document.getElementById('enrolled-dropdown');
+        const enrolledArrow = document.getElementById('enrolled-arrow');
+
+        enrolledBtn.addEventListener('click', () => {
+            const isHidden = enrolledDropdown.classList.contains('hidden');
+            if (isHidden) {
+                enrolledDropdown.classList.remove('hidden');
+                enrolledArrow.classList.add('rotate-180');
+            } else {
+                enrolledDropdown.classList.add('hidden');
+                enrolledArrow.classList.remove('rotate-180');
+            }
+        });
+
+        // Active class functionality
+        document.querySelectorAll('.teaching-class-btn, .enrolled-class-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons in the same dropdown
+                const dropdown = this.closest('[id$="dropdown"]');
+                dropdown.querySelectorAll('button').forEach(btn => {
+                    btn.classList.remove('bg-blue-100');
+                });
+
+                // Add active class to clicked button
+                this.classList.add('bg-blue-100');
+            });
         });
     </script>
 </body>

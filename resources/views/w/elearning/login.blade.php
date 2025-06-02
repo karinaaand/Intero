@@ -40,7 +40,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
-    const baseUrl = "http://127.0.0.1:8000/api";
+    const baseUrl = "http://127.0.0.:8000/api";
 
   document.getElementById('login-form').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -56,8 +56,8 @@
       const token = response.data.access_token;
       localStorage.setItem('token', token);
 
-      // Redirect ke route elearning.beranda
-      window.location.href = "{{ route('elearning.beranda') }}";
+      // Redirect ke route elearning.home
+      window.location.href = "{{ route('elearning.home') }}";
 
     } catch (error) {
       console.error(error);

@@ -13,15 +13,18 @@
 
     <!-- Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    @stack('styles')
 </head>
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
-        @yield('content')
+        @hasSection('content')
+            @yield('content')
+        @endif
     </div>
-    
-    @yield('scripts')
-</body>
 
+    @stack('scripts')
+</body>
+</html>

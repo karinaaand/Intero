@@ -95,7 +95,7 @@
                   <a class="active:text-yellow-400 transition-colors block py-1" href="#">Berita</a>
                 </li>
                 <li>
-                  <a class="active:text-yellow-400 transition-colors block py-1" href="{{ route('elearning.beranda') }}">E-Learning</a>
+                  <a class="active:text-yellow-400 transition-colors block py-1" href="{{ route('elearning.home') }}">E-Learning</a>
                 </li>
                 <li>
                   <a class="active:text-yellow-400 transition-colors block py-1" href="#">Perpustakaan</a>
