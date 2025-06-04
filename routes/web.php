@@ -28,10 +28,11 @@ Route::prefix('elearning')->group(function () {
     // ==========================
 // Views untuk Student
 // ==========================
-    Route::prefix('student')->name('elearning.student.')->group(function () {
+    Route::prefix('student/')->name('elearning.student.')->group(function () {
+
         // menampilkan daftar coursework dan daftar material
-        Route::get('/coursework/{courseId}', function ($courseId) {
-            return view('elearning.student_coursework', compact('courseId'));
+        Route::get('/coursework', function () {
+            return view('elearning.student_coursework');
         })->name('coursework');
 
         // menampilkan detail coursework
@@ -52,8 +53,8 @@ Route::prefix('elearning')->group(function () {
     Route::prefix('teacher')->name('elearning.teacher.')->group(function () {
 
         // menampilkan semua data coursework dan daftar material
-        Route::get('/coursework/{courseId}', function ($courseId) {
-            return view('elearning.teacher_coursework', compact('courseId'));
+        Route::get('/coursework', function () {
+            return view('elearning.teacher_coursework');
         })->name('coursework');
 
         // buat create coursework
