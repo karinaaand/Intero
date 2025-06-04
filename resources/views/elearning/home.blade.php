@@ -912,7 +912,6 @@
 
                 const baseUrl = "{{ env('VITE_API_BASE_URL', 'http://127.0.0.1:8000/api') }}";
                 const loginUrl = "{{ route('elearning.login') }}";
-                const streamBaseUrl = "{{ route('elearning.teacher.coursework', '') }}";
                 const apiCoursesBaseUrl = "http://localhost:8000/api/courses";
                 let currentEditingCourseId = null;
                 let allCoursesData = [];
@@ -1075,7 +1074,7 @@
 
                             const courseId = card.dataset.id;
                             // Redirect ke halaman stream teacher dengan courseId
-                            window.location.href = `${streamBaseUrl}/${courseId}`;
+                            window.location.href = `elearning/teacher/coursework/${courseId}`;
                         });
                     });
                 }
