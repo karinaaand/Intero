@@ -26,26 +26,59 @@ Route::prefix('elearning')->group(function () {
     })->name('elearning.login');
 
     // ==========================
-    // Views untuk Student
-    // ==========================
+// Views untuk Student
+// ==========================
+    Route::prefix('student')->name('elearning.student.')->group(function () {
+        // menampilkan daftar coursework dan daftar material
+        Route::get('/coursework/{courseId}', function ($courseId) {
+            return view('elearning.student_coursework', compact('courseId'));
+        })->name('coursework');
 
-    Route::view('/student/coursework', 'elearning.student_coursework')->name('elearning.student.coursework');
-    Route::view('/student/coursework/detail', 'elearning.student_coursework_detail')->name('elearning.student.coursework.detail');
-    Route::view('/student/people', 'elearning.student.people')->name('elearning.student.people');
-    Route::view('/student/stream', 'elearning.student.stream')->name('elearning.student.stream');
+        // menampilkan detail coursework
+        Route::get('/coursework/{courseId}/detail/{courseworkId}', function ($courseId, $courseworkId) {
+            return view('elearning.student_coursework_detail', compact('courseId', 'courseworkId'));
+        })->name('coursework.detail');
+
+        // menampilkan daftar teacher dan student
+        Route::get('/people/{courseId}', function ($courseId) {
+            return view('elearning.student.people', compact('courseId'));
+        })->name('people');
+    });
+
 
     // ==========================
-    // Views untuk Teacher
-    // ==========================
+// Views untuk Teacher
+// ==========================
+    Route::prefix('teacher')->name('elearning.teacher.')->group(function () {
 
-    Route::view('/teacher/coursework', 'elearning.teacher_coursework')->name('elearning.teacher.coursework');
-    Route::view('/teacher/coursework/assignment', 'elearning.teacher_coursework_assignment')->name('elearning.teacher.coursework.assignment');
-    Route::view('/teacher/coursework/material', 'elearning.teacher_coursework_material')->name('elearning.teacher.coursework.material');
-    Route::view('/teacher/grades', 'elearning.teacher_grades')->name('elearning.teacher.grades');
-    Route::view('/teacher/grades/student-work', 'elearning.teacher_grades_student_work')->name('elearning.teacher.grades.student-work');
-    Route::view('/teacher/grades/student-work/submission', 'elearning.teacher_grades_student_work_submission')->name('elearning.teacher.grades.student-work.submission');
-    Route::view('/teacher/people', 'elearning.teacher_people')->name('elearning.teacher.people');
-    Route::view('/teacher/stream', 'elearning.teacher_stream')->name('elearning.teacher.stream');
+        // menampilkan semua data coursework dan daftar material
+        Route::get('/coursework/{courseId}', function ($courseId) {
+            return view('elearning.teacher_coursework', compact('courseId'));
+        })->name('coursework');
+
+        // buat create coursework
+        Route::get('/coursework/{courseId}/assignment/{courseworkId}', function ($courseId, $courseworkId) {
+            return view('elearning.teacher_coursework_assignment', compact('courseId', 'courseworkId'));
+        })->name('coursework.assignment');
+
+        // buat create material
+        Route::get('/coursework/{courseId}/material', function ($courseId) {
+            return view('elearning.teacher_coursework_material', compact('courseId'));
+        })->name('coursework.material');
+
+        // Buat guru menilai submission per assignment
+        Route::get('/grades/{courseId}', function ($courseId) {
+            return view('elearning.teacher_grades', compact('courseId'));
+        })->name('grades');
+
+        // invite teacher dan student , menampilkan teachers dan student
+        Route::get('/people/{courseId}', function ($courseId) {
+            return view('elearning.teacher_people', compact('courseId'));
+        })->name('people');
+    });
+
+
+
 
 });
 
@@ -53,3 +86,16 @@ Route::prefix('elearning')->group(function () {
 
 
 
+        // Route::get('/stream/{courseId}', function ($courseId) {
+        //     return view('elearning.teacher_stream', compact('courseId'));
+        // })->name('stream');
+        // Route::get('/grades/{courseId}/student-work/{courseworkId}', function ($courseId) {
+        //     return view('elearning.teacher_grades_student_work', compact('courseId'));
+        // })->name('grades.student-work');
+
+        // Route::get('/grades/{courseId}/student-work/{courseworkId}/submission/{submissionId}', function ($courseId) {
+        //     return view('elearning.teacher_grades_student_work_submission', compact('courseId'));
+        // })->name('grades.student-work.submission');
+        // Route::get('/stream/{courseId}', function ($courseId) {
+        //     return view('elearning.student.stream', compact('courseId'));
+        // })->name('stream');
