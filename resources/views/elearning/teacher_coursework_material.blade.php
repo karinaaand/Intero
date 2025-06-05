@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>LMS SATAS Assignment</title>
+    <title>LMS SATAS Material</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <style>
@@ -24,8 +24,8 @@
         <div class="flex items-center space-x-8">
             <div class="font-sans font-semibold text-base leading-5">LMS SATAS</div>
             <nav class="flex space-x-6 text-sm font-normal leading-5 text-black">
-                <a href="#" class="hover:underline">Home</a>
-                <a href="#" class="relative text-blue-700 font-semibold hover:underline">
+                <a href="{{ route('home') }}" class="hover:underline">Home</a>
+                <a href="{{ route('elearning.home') }}" class="relative text-blue-700 font-semibold hover:underline">
                     E-Learning
                     <span class="absolute bottom-0 left-0 right-0 h-[2px] bg-blue-700 rounded"></span>
                 </a>
@@ -33,19 +33,17 @@
         </div>
         <div class="flex items-center space-x-8 text-sm font-normal leading-5">
             <span class="text-green-700">Token Refresh</span>
-            <button class="text-blue-700 hover:underline flex items-center space-x-1">
-                <span>Guy Hawkins, S.Pd.</span>
+            <button id="userDropdown" class="text-blue-700 hover:underline flex items-center space-x-1">
+                <span id="userName">Loading...</span>
                 <i class="fas fa-chevron-down text-xs"></i>
             </button>
         </div>
-
-
     </header>
 
     <main class="p-6">
-        <div class="flex justify-end mb-5"> <!-- Parent dengan flex -->
-            <button onclick="window.location.href='{{ route('elearning.teacher.coursework') }}'"
-                    class="bg-blue-800 text-white text-sm font-semibold px-4 py-2 rounded-md hover:bg-blue-900 focus:outline-none">
+        <div class="flex justify-end mb-5">
+            <button id="postMaterialBtn"
+                class="bg-blue-800 text-white text-sm font-semibold px-4 py-2 rounded-md hover:bg-blue-900 focus:outline-none">
                 Post
             </button>
         </div>
@@ -58,50 +56,180 @@
                     <button aria-label="Close" class="text-gray-600 hover:text-gray-900 focus:outline-none">
                         <i class="fas fa-times text-lg"></i>
                     </button>
-                    <button aria-label="Assignment icon"
+                    <button aria-label="Material icon"
                         class="bg-gray-300 text-gray-600 rounded-full p-2 cursor-default" disabled>
-                        <i class="fas fa-file-alt text-sm"></i>
+                        <i class="fas fa-book text-sm"></i>
                     </button>
                     <h2 class="text-gray-600 font-semibold text-lg leading-6 select-none">Material</h2>
                 </header>
 
-                <form class="space-y-4 bg-white rounded-lg border border-gray-300 p-4">
-                    <input type="text" value="TUGAS BAB 1"
-                        class="w-full bg-gray-200 text-gray-600 text-sm font-normal leading-5 px-4 py-3 border-b border-gray-700 focus:outline-none"
-                        readonly />
-                    <textarea rows="4"
-                        class="w-full bg-gray-200 text-gray-600 text-xs font-normal leading-5 px-4 py-3 border-b border-gray-700 resize-none focus:outline-none"
-                        readonly>http://hdiabfpiaflhLFBljbf;HWFLHFLKAGWLKBAG</textarea>
+                <form id="materialForm" class="space-y-4 bg-white rounded-lg border border-gray-300 p-4">
+                    <input type="text" id="materialTitle" placeholder="Judul Materi"
+                        class="w-full bg-white text-gray-800 text-sm font-normal leading-5 px-4 py-3 border-b border-gray-300 focus:outline-none focus:border-blue-500" />
+                    <textarea id="materialLink" rows="4" placeholder="Link atau deskripsi materi"
+                        class="w-full bg-white text-gray-800 text-xs font-normal leading-5 px-4 py-3 border-b border-gray-300 resize-none focus:outline-none focus:border-blue-500"></textarea>
                 </form>
             </div>
 
             <aside class="w-full md:w-72 p-4 md:p-6 space-y-6 rounded-b-lg md:rounded-b-none md:rounded-r-lg">
                 <div>
                     <label class="block text-xs font-semibold leading-4 mb-1">For</label>
-                    <div
-                        class="bg-gray-200 text-gray-600 text-xs font-normal leading-5 rounded-md px-4 py-3 select-none">
-                        Kimia X MIPA 1
-                    </div>
+                    <input type="text" id="materialFor" placeholder="Kelas tujuan" value="Kimia X MIPA 1"
+                        class="w-full bg-white text-gray-800 text-xs font-normal leading-5 rounded-md px-4 py-3 border border-gray-300 focus:outline-none focus:border-blue-500" />
                 </div>
                 <div>
                     <label class="block text-xs font-semibold leading-4 mb-1">Points</label>
-                    <div
-                        class="bg-gray-200 text-gray-600 text-xs font-normal leading-5 rounded-md px-4 py-3 flex justify-between items-center cursor-pointer select-none">
-                        100
-                        <i class="fas fa-chevron-down text-xs"></i>
-                    </div>
+                    <input type="number" id="materialPoints" placeholder="Poin" value="100"
+                        class="w-full bg-white text-gray-800 text-xs font-normal leading-5 rounded-md px-4 py-3 border border-gray-300 focus:outline-none focus:border-blue-500" />
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold leading-4 mb-1">Due</label>
-                    <div
-                        class="bg-gray-200 text-gray-600 text-xs font-normal leading-5 rounded-md px-4 py-3 flex justify-between items-center cursor-pointer select-none">
-                        No due date
-                        <i class="fas fa-chevron-down text-xs"></i>
-                    </div>
+                    <label class="block text-xs font-semibold leading-4 mb-1">Due Date</label>
+                    <input type="date" id="materialDueDate"
+                        class="w-full bg-white text-gray-800 text-xs font-normal leading-5 rounded-md px-4 py-3 border border-gray-300 focus:outline-none focus:border-blue-500" />
                 </div>
             </aside>
+
+            <input type="hidden" id="courseId" value="{{ $courseId }}">
         </section>
     </main>
-</body>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const loginUrl = "{{ route('elearning.login') }}";
+            const postBtn = document.getElementById('postMaterialBtn');
+
+            if (postBtn) {
+                postBtn.addEventListener('click', createMaterial);
+            }
+
+            // ==================== TOKEN MANAGEMENT ====================
+            function getToken() {
+                return localStorage.getItem('token');
+            }
+
+            function setToken(token) {
+                localStorage.setItem('token', token);
+            }
+
+            function clearToken() {
+                localStorage.removeItem('token');
+            }
+
+            function redirectToLogin() {
+                clearToken();
+                window.location.href = loginUrl;
+            }
+
+            // ==================== USER DATA FETCHING ====================
+            async function fetchUserData() {
+                const token = localStorage.getItem('token');
+                if (!token) {
+                    console.error('Token not found');
+                    return;
+                }
+
+                try {
+                    const baseUrl = "{{ env('VITE_API_BASE_URL', 'http://127.0.0.1:8000/api') }}";
+                    const response = await axios.get(`${baseUrl}/user`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    });
+
+                    const userData = response.data;
+                    updateUserDisplay(userData);
+                } catch (error) {
+                    console.error('Failed to fetch user data:', error);
+                    if (error.response?.status === 401) {
+                        redirectToLogin();
+                    }
+                }
+            }
+
+            // Update user display name
+            function updateUserDisplay(userData) {
+                const userNameElement = document.getElementById('userName');
+                if (userData && userData.name) {
+                    // Check if title exists in the data (like 'S.Pd.')
+                    const title = userData.title ? `, ${userData.title}` : '';
+                    userNameElement.textContent = `${userData.name}${title}`;
+                } else {
+                    userNameElement.textContent = 'User';
+                }
+            }
+
+            // ==================== INITIALIZATION ====================
+            fetchUserData();
+
+            // Token refresh redirect to login
+            const tokenRefreshText = document.querySelector('.text-green-700');
+            if (tokenRefreshText) {
+                tokenRefreshText.style.cursor = 'pointer';
+                tokenRefreshText.title = 'Click to re-login';
+                tokenRefreshText.addEventListener('click', () => {
+                    redirectToLogin();
+                });
+            }
+        });
+
+        // ========== CREATE MATERIAL ==========
+        async function createMaterial() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                console.error('Token not found');
+                alert('Silakan login kembali');
+                redirectToLogin();
+                return;
+            }
+
+            const courseId = document.getElementById('courseId').value;
+            const title = document.getElementById('materialTitle').value;
+            const link = document.getElementById('materialLink').value;
+            const forClass = document.getElementById('materialFor').value;
+            const points = document.getElementById('materialPoints').value;
+            const dueDate = document.getElementById('materialDueDate').value;
+            console.log(dueDate);
+
+            // Input validation
+            if (!title || !link) {
+                alert('Judul dan link materi harus diisi');
+                return;
+            }
+
+            try {
+                const baseUrl = "{{ env('VITE_API_BASE_URL', 'http://127.0.0.1:8000/api') }}";
+                const response = await axios.post(`${baseUrl}/courses/${courseId}/coursework`, {
+                    title: title,
+                    link: "", // ← isi dengan nilai default kosong kalau tidak dipakai
+                    for: forClass,
+                    points: parseInt(points),
+                    due_date: dueDate ? `${dueDate}T23:59:00` : null
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                alert("Materi berhasil dibuat!");
+                window.location.href = `/elearning/teacher/coursework/${courseId}`;
+            } catch (error) {
+                console.error('Error creating material:', error);
+                let errorMessage = "Gagal membuat materi";
+
+                if (error.response) {
+                    if (error.response.status === 401) {
+                        errorMessage = "Sesi telah berakhir, silakan login kembali";
+                        redirectToLogin();
+                    } else if (error.response.data && error.response.data.message) {
+                        errorMessage = error.response.data.message;
+                    }
+                }
+
+                alert(errorMessage);
+            }
+        }
+    </script>
+</body>
 </html>

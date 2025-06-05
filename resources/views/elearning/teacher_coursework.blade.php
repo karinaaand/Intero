@@ -151,7 +151,7 @@
 
                 <div class="flex-1 flex flex-col">
                     <!-- Tambahkan tab navigation seperti di kode kedua -->
-                    <div class="flex space-x-4 p-4 border-b border-gray-200">
+                    <div class="flex space-x-4 p-4 border-b border-gray-200" id="navTabs">
                         {{--  <a href="{{ route('elearning.teacher.stream') }}" class="px-6 py-2 rounded-full border border-gray-400 text-blue-900 text-sm font-normal">
                             Stream
                         </a>  --}}
@@ -240,8 +240,28 @@
         e.stopPropagation();
         modal.classList.toggle('hidden');
 
-        assignmentLink.setAttribute('href', `/elearning/teacher/coursework/${courseId}/assignment/${courseId}`);
+        assignmentLink.setAttribute('href', `/elearning/teacher/coursework/${courseId}/assignment/${courseId}`); // courseID belakang ganti pake courseworkId
         materialLink.setAttribute('href', `/elearning/teacher/coursework/${courseId}/material`);
+    });
+
+    // button nav
+    const routes = [
+        // { name: 'Stream', url: `/elearning/teacher/stream/${courseId}`, active: false },
+        { name: 'Classwork', url: `/elearning/teacher/coursework/${courseId}`, active: true },
+        { name: 'People', url: `/elearning/teacher/people/${courseId}`, active: false },
+        { name: 'Grades', url: `/elearning/teacher/grades/${courseId}`, active: false }
+    ];
+
+    routes.forEach(route => {
+        const a = document.createElement('a');
+        a.href = route.url;
+        a.textContent = route.name;
+        a.className = `px-6 py-2 rounded-full border text-sm font-normal ${
+            route.active
+                ? 'border-blue-400 bg-blue-300 text-gray-900'
+                : 'border-gray-400 text-gray-900'
+        }`;
+        navTabs.appendChild(a);
     });
 
     // Set href attributes dynamically
@@ -256,7 +276,7 @@
 
         materialLink.addEventListener('click', function(e) {
             e.preventDefault();
-            window.location.href = `/elearning/teacher/coursework/material/${courseId}`;
+            window.location.href = `/elearning/teacher/coursework/${courseId}/material`;
         });
     }
 
@@ -478,6 +498,26 @@
 
     // ==================== INITIALIZATION ====================
     fetchUserData();
+
+    async function fetchMaterials(courseId) {
+    const token = getToken();
+    const baseUrl = "{{ env('VITE_API_BASE_URL', 'http://127.0.0.1:8000/api') }}";
+
+    try {
+        const response = await axios.get(`${baseUrl}/classroom/courses/${courseId}/materials`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        const materials = response.data;
+        console.log('Materials:', materials);
+        // render ke HTML list
+    } catch (error) {
+        console.error('Failed to fetch materials:', error);
+    }
+}
+
 
     // Refresh token button
     const refreshTokenBtn = document.getElementById('refreshTokenBtn');

@@ -56,7 +56,7 @@ Route::prefix('elearning')->group(function () {
         //     return view('elearning.teacher_coursework', compact('courseId'));
         // })->name('coursework');
 
-            Route::get('/coursework/{courseId}', function ($courseId) {
+        Route::get('/coursework/{courseId}', function ($courseId) {
             return view('elearning.teacher_coursework', compact('courseId'));
         })->name('coursework');
 

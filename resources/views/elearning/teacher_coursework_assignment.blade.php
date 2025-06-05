@@ -24,8 +24,8 @@
         <div class="flex items-center space-x-8">
             <div class="font-sans font-semibold text-base leading-5">LMS SATAS</div>
             <nav class="flex space-x-6 text-sm font-normal leading-5 text-black">
-                <a href="#" class="hover:underline">Home</a>
-                <a href="#" class="relative text-blue-700 font-semibold hover:underline">
+                <a href="{{ route('home') }}" class="hover:underline">Home</a>
+                <a href="{{ route('elearning.home') }}" class="relative text-blue-700 font-semibold hover:underline">
                     E-Learning
                     <span class="absolute bottom-0 left-0 right-0 h-[2px] bg-blue-700 rounded"></span>
                 </a>
@@ -104,4 +104,76 @@
     </main>
 </body>
 
+</html>
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const loginUrl = "{{ route('elearning.login') }}";
+
+        // ==================== TOKEN MANAGEMENT ====================
+        function getToken() {
+            return localStorage.getItem('token');
+        }
+
+        function setToken(token) {
+            localStorage.setItem('token', token);
+        }
+
+        function clearToken() {
+            localStorage.removeItem('token');
+        }
+
+        function redirectToLogin() {
+            clearToken();
+            window.location.href = loginUrl;
+        }
+
+        // ==================== USER DATA FETCHING ====================
+        async function fetchUserData() {
+            const token = getToken();
+            if (!token) {
+                console.error('Token not found');
+                return;
+            }
+
+            try {
+                const baseUrl = "{{ env('VITE_API_BASE_URL', 'http://127.0.0.1:8000/api') }}";
+                const response = await axios.get(`${baseUrl}/user`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+
+                const userData = response.data;
+                console.log('User data:', userData);
+                // Anda bisa menambahkan tampilan userData jika diperlukan nanti.
+            } catch (error) {
+                console.error('Failed to fetch user data:', error);
+
+                if (error.response?.status === 401) {
+                    redirectToLogin();
+                }
+            }
+        }
+
+        // ==================== INISIALISASI ====================
+        fetchUserData();
+
+        // Tombol refresh redirect ke login
+        const tokenRefreshText = document.querySelector('.text-green-700');
+        if (tokenRefreshText) {
+            tokenRefreshText.style.cursor = 'pointer';
+            tokenRefreshText.title = 'Click to re-login';
+            tokenRefreshText.addEventListener('click', () => {
+                redirectToLogin();
+            });
+        }
+    });
+</script>
+
+
+</script>
+</body>
 </html>

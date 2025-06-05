@@ -130,10 +130,10 @@
                 <div class="flex-1 flex flex-col">
                     <div class="flex-1 flex flex-col">
                         <div class="flex space-x-4 p-4 border-b border-gray-200">
-                            <a href="{{ route('elearning.teacher.stream') }}" class="px-6 py-2 rounded-full border border-gray-400 text-blue-900 text-sm font-normal">
+                            {{--  <a href="{{ route('elearning.teacher.stream') }}" class="px-6 py-2 rounded-full border border-gray-400 text-blue-900 text-sm font-normal">
                                 Stream
-                            </a>
-                            <a href="{{ route('elearning.teacher.coursework') }}" class="px-6 py-2 rounded-full border border-gray-400 text-gray-900 text-sm font-normal">
+                            </a>  --}}
+                            {{--  <a href="{{ route('elearning.teacher.coursework') }}" class="px-6 py-2 rounded-full border border-gray-400 text-gray-900 text-sm font-normal">
                                 Classwork
                             </a>
                             <a href="{{ route('elearning.teacher.people') }}" class="px-6 py-2 rounded-full border border-blue-400 bg-blue-300 text-gray-900 text-sm font-normal">
@@ -141,7 +141,7 @@
                             </a>
                             <a href="{{ route('elearning.teacher.grades') }}" class="px-6 py-2 rounded-full border border-gray-400 text-gray-900 text-sm font-normal">
                                 Grades
-                            </a>
+                            </a>  --}}
                         </div>
                         <div class="flex-1 flex flex-col px-4">
                             <div class="flex items-center justify-between mb-4">
