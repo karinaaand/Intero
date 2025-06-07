@@ -61,9 +61,15 @@ Route::prefix('elearning')->group(function () {
         })->name('coursework');
 
         // buat create coursework
-        Route::get('/coursework/{courseId}/assignment/{courseworkId}', function ($courseId, $courseworkId) {
-            return view('elearning.teacher_coursework_assignment', compact('courseId', 'courseworkId'));
+        // Route::get('/coursework/{courseId}/assignment/{courseworkId}', function ($courseId, $courseworkId) {
+        //     return view('elearning.teacher_coursework_assignment', compact('courseId', 'courseworkId'));
+        // })->name('coursework.assignment');
+
+        // buat create coursework
+         Route::get('/coursework/{courseId}/assignment', function ($courseId) {
+            return view('elearning.teacher_coursework_assignment', compact('courseId'));
         })->name('coursework.assignment');
+
 
         // buat create material
         Route::get('/coursework/{courseId}/material', function ($courseId) {

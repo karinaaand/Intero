@@ -193,6 +193,10 @@
                         <div id="courseworkList">
                             <!-- Coursework content will be loaded here -->
                         </div>
+
+                        <div id="materialsList">
+                            <!-- Coursework content will be loaded here -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -240,7 +244,7 @@
         e.stopPropagation();
         modal.classList.toggle('hidden');
 
-        assignmentLink.setAttribute('href', `/elearning/teacher/coursework/${courseId}/assignment/${courseId}`); // courseID belakang ganti pake courseworkId
+        assignmentLink.setAttribute('href', `/elearning/teacher/coursework/${courseId}/assignment}`); // courseID belakang ganti pake courseworkId
         materialLink.setAttribute('href', `/elearning/teacher/coursework/${courseId}/material`);
     });
 
@@ -266,12 +270,12 @@
 
     // Set href attributes dynamically
     if (assignmentLink && materialLink) {
-        assignmentLink.href = `/elearning/teacher/coursework/assignment/${courseId}`;
+        assignmentLink.href = `/elearning/teacher/coursework/${courseId}/assignment`;
         materialLink.href = `/elearning/teacher/coursework/material/${courseId}`;
 
         assignmentLink.addEventListener('click', function(e) {
             e.preventDefault();
-            window.location.href = `/elearning/teacher/coursework/assignment/${courseId}`;
+            window.location.href = `/elearning/teacher/coursework/${courseId}/assignment`;
         });
 
         materialLink.addEventListener('click', function(e) {
@@ -429,6 +433,7 @@
     // ==================== COURSEWORK FUNCTIONALITY ====================
     if (courseId) {
         loadCoursework(courseId);
+        fetchMaterials(courseId);
     } else {
         const courseworkList = document.getElementById('courseworkList');
         if (courseworkList) {
@@ -500,23 +505,63 @@
     fetchUserData();
 
     async function fetchMaterials(courseId) {
-    const token = getToken();
-    const baseUrl = "{{ env('VITE_API_BASE_URL', 'http://127.0.0.1:8000/api') }}";
-
-    try {
-        const response = await axios.get(`${baseUrl}/classroom/courses/${courseId}/materials`, {
-            headers: {
-                Authorization: `Bearer ${token}`
+        try {
+            const token = getToken();
+            if (!token) {
+                showToast('Authentication token not found. Please login again.', false);
+                redirectToLogin();
+                return;
             }
-        });
 
-        const materials = response.data;
-        console.log('Materials:', materials);
-        // render ke HTML list
-    } catch (error) {
-        console.error('Failed to fetch materials:', error);
+            const baseUrl = "{{ env('VITE_API_BASE_URL', 'http://127.0.0.1:8000/api') }}";
+            const response = await axios.get(`${baseUrl}/classroom/courses/${courseId}/materials`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            const materials = response.data;
+            renderMaterials(materials);
+        } catch (error) {
+            console.error('Gagal memuat materials:', error);
+            const materialsList = document.getElementById('materialsList');
+            if (materialsList) {
+                materialsList.innerHTML = '<div class="text-center py-8 text-red-500">Gagal memuat materials</div>';
+            }
+
+            if (error.response?.status === 401) {
+                showToast('Session expired. Please login again.', false);
+                redirectToLogin();
+            } else {
+                showToast('Failed to load materials. Please try again.', false);
+            }
+        }
     }
-}
+
+    function renderMaterials(materialItems) {
+        const container = document.getElementById('materialsList');
+        if (!container) return;
+
+        container.innerHTML = '';
+
+        if (!Array.isArray(materialItems) || materialItems.length === 0) {
+            container.innerHTML = '<div class="text-center py-8 text-gray-500">Belum ada materi</div>';
+            return;
+        }
+
+        materialItems.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.className = 'material-item mb-6 p-4 border border-gray-200 rounded-lg';
+            itemElement.innerHTML = `
+                <h3 class="font-semibold text-lg mb-2">${item.title}</h3>
+                <p class="text-gray-600 mb-3">${item.description || 'Tidak ada deskripsi'}</p>
+                <a href="${item.link}" target="_blank" class="text-blue-600 hover:underline">Buka Materi</a>
+            `;
+            container.appendChild(itemElement);
+        });
+    }
+
+
 
 
     // Refresh token button

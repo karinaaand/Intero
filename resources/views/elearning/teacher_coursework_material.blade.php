@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>LMS SATAS Material</title>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LMS SATAS Material</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <style>
@@ -48,10 +54,9 @@
             </button>
         </div>
 
-        <section class="flex flex-col md:flex-row border border-gray-300 rounded-lg overflow-hidden max-w-7xl mx-auto"
+        <section class="flex flex-col border border-gray-300 rounded-lg overflow-hidden max-w-7xl mx-auto"
             style="min-height: 400px">
-            <div
-                class="flex-1 p-4 md:p-6 space-y-4 border-b md:border-b-0 md:border-r border-gray-300 rounded-t-lg md:rounded-t-none md:rounded-l-lg">
+            <div class="flex-1 p-4 md:p-6 space-y-4 rounded-lg">
                 <header class="flex items-center space-x-3 mb-2">
                     <button aria-label="Close" class="text-gray-600 hover:text-gray-900 focus:outline-none">
                         <i class="fas fa-times text-lg"></i>
@@ -64,30 +69,12 @@
                 </header>
 
                 <form id="materialForm" class="space-y-4 bg-white rounded-lg border border-gray-300 p-4">
-                    <input type="text" id="materialTitle" placeholder="Judul Materi"
+                    <input type="text" id="materialTitle" placeholder="Judul Materi" value="Watch this video 2"
                         class="w-full bg-white text-gray-800 text-sm font-normal leading-5 px-4 py-3 border-b border-gray-300 focus:outline-none focus:border-blue-500" />
                     <textarea id="materialLink" rows="4" placeholder="Link atau deskripsi materi"
                         class="w-full bg-white text-gray-800 text-xs font-normal leading-5 px-4 py-3 border-b border-gray-300 resize-none focus:outline-none focus:border-blue-500"></textarea>
                 </form>
             </div>
-
-            <aside class="w-full md:w-72 p-4 md:p-6 space-y-6 rounded-b-lg md:rounded-b-none md:rounded-r-lg">
-                <div>
-                    <label class="block text-xs font-semibold leading-4 mb-1">For</label>
-                    <input type="text" id="materialFor" placeholder="Kelas tujuan" value="Kimia X MIPA 1"
-                        class="w-full bg-white text-gray-800 text-xs font-normal leading-5 rounded-md px-4 py-3 border border-gray-300 focus:outline-none focus:border-blue-500" />
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold leading-4 mb-1">Points</label>
-                    <input type="number" id="materialPoints" placeholder="Poin" value="100"
-                        class="w-full bg-white text-gray-800 text-xs font-normal leading-5 rounded-md px-4 py-3 border border-gray-300 focus:outline-none focus:border-blue-500" />
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold leading-4 mb-1">Due Date</label>
-                    <input type="date" id="materialDueDate"
-                        class="w-full bg-white text-gray-800 text-xs font-normal leading-5 rounded-md px-4 py-3 border border-gray-300 focus:outline-none focus:border-blue-500" />
-                </div>
-            </aside>
 
             <input type="hidden" id="courseId" value="{{ $courseId }}">
         </section>
@@ -186,10 +173,6 @@
             const courseId = document.getElementById('courseId').value;
             const title = document.getElementById('materialTitle').value;
             const link = document.getElementById('materialLink').value;
-            const forClass = document.getElementById('materialFor').value;
-            const points = document.getElementById('materialPoints').value;
-            const dueDate = document.getElementById('materialDueDate').value;
-            console.log(dueDate);
 
             // Input validation
             if (!title || !link) {
@@ -199,12 +182,9 @@
 
             try {
                 const baseUrl = "{{ env('VITE_API_BASE_URL', 'http://127.0.0.1:8000/api') }}";
-                const response = await axios.post(`${baseUrl}/courses/${courseId}/coursework`, {
+                const response = await axios.post(`${baseUrl}/classroom/courses/${courseId}/materials`, {
                     title: title,
-                    link: "", // ← isi dengan nilai default kosong kalau tidak dipakai
-                    for: forClass,
-                    points: parseInt(points),
-                    due_date: dueDate ? `${dueDate}T23:59:00` : null
+                    description: link,
                 }, {
                     headers: {
                         Authorization: `Bearer ${token}`,
