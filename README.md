@@ -1,5 +1,5 @@
 <h2 align="center">Integrasi Portal Akademik dengan Google Classroom</h2>
-## Tentang Platform
+
 Platform ini merupakan sistem terintegrasi yang menggabungkan layanan Google Classroom dengan Sistem Portal Akademik Perguruan Tinggi. Tujuannya adalah untuk meningkatkan efisiensi dan efektivitas proses belajar mengajar daring, serta memungkinkan institusi pendidikan memantau aktivitas pembelajaran di Google Classroom secara langsung melalui Portal Akademik.
 
 ## 📌 Fitur Utama
@@ -16,20 +16,14 @@ Platform ini merupakan sistem terintegrasi yang menggabungkan layanan Google Cla
 <h3 align="center">Teknologi yang Digunakan:</h3>
 <p align="center">
   <img src="https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white" alt="JSON Badge">
-  <img src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" alt="Markdown Badge">
   <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Badge">
   <img src="https://img.shields.io/badge/Composer-885630?style=for-the-badge&logo=composer&logoColor=white" alt="Composer Badge">
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript Badge">
-  <img src="https://img.issues.sh/github/languages/top/username/repo?color=white" alt="Top language badge">
   <img src="https://img.shields.io/badge/XML-000000?style=for-the-badge&logo=xml&logoColor=white" alt="XML Badge">
   <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP Badge">
   <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite Badge">
   <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white" alt="Axios Badge">
 </p>
-- Laravel Framework 12.12.0
-- PHP 8.2.12
-- Google API Client for PHP 2.15.4
-- MySQL
 
 
 ## Penggunaan
