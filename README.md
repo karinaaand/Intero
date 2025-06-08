@@ -132,4 +132,4 @@ Platform ini merupakan sistem terintegrasi yang menggabungkan layanan Google Cla
 
 ## Kontak
 
-Teknologi Rekaysa Perankat Lunak, Departemen Teknik Elekro dan Informatika, Universitas Gadjah Mada.
+Teknologi Rekayasa Perangkat Lunak, Departemen Teknik Elekro dan Informatika, Universitas Gadjah Mada.
