@@ -13,7 +13,6 @@ Platform ini merupakan sistem terintegrasi yang menggabungkan layanan Google Cla
 -   **Autentikasi Aman**: Menggunakan protokol OAuth 2.0 dari Google untuk autentikasi pengguna dan penarikan data kelas yang aman.
 
 ## 📦 Teknologi yang Digunakan
-<h3 align="center">Teknologi yang Digunakan:</h3>
 <p align="center">
   <img src="https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white" alt="JSON Badge">
   <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Badge">
