@@ -1,61 +1,141 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h2 align="center">Integrasi Portal Akademik dengan Google Classroom</h2>
+## Tentang Platform
+Platform ini merupakan sistem terintegrasi yang menggabungkan layanan Google Classroom dengan Sistem Portal Akademik Perguruan Tinggi. Tujuannya adalah untuk meningkatkan efisiensi dan efektivitas proses belajar mengajar daring, serta memungkinkan institusi pendidikan memantau aktivitas pembelajaran di Google Classroom secara langsung melalui Portal Akademik.
 
+## 📌 Fitur Utama
+
+-   **Integrasi Google Classroom**: Menyatukan layanan Google Classroom dengan Sistem Portal Akademik internal.
+-   **Tampilan Daftar Kelas**: Menampilkan daftar kelas dari Google Classroom secara langsung di antarmuka Sistem Portal Akademik.
+-   **Pengelolaan Konten Pembelajaran**: Mendukung pengelolaan pengumuman dan tugas langsung dari Portal Akademik.
+-   **Sinkronisasi Data Otomatis**: Mengurangi redundansi data melalui sinkronisasi otomatis antara kedua sistem.
+-   **Akses Terpusat**: Memungkinkan guru dan siswa mengakses seluruh informasi pembelajaran melalui satu platform terintegrasi.
+-   **Pemantauan Aktivitas Belajar**: Mempermudah guru dalam memantau proses belajar dan membantu sekolah memantau aktivitas pembelajaran daring.
+-   **Autentikasi Aman**: Menggunakan protokol OAuth 2.0 dari Google untuk autentikasi pengguna dan penarikan data kelas yang aman.
+
+## 📦 Teknologi yang Digunakan
+<h3 align="center">Teknologi yang Digunakan:</h3>
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white" alt="JSON Badge">
+  <img src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" alt="Markdown Badge">
+  <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Badge">
+  <img src="https://img.shields.io/badge/Composer-885630?style=for-the-badge&logo=composer&logoColor=white" alt="Composer Badge">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript Badge">
+  <img src="https://img.issues.sh/github/languages/top/username/repo?color=white" alt="Top language badge">
+  <img src="https://img.shields.io/badge/XML-000000?style=for-the-badge&logo=xml&logoColor=white" alt="XML Badge">
+  <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP Badge">
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite Badge">
+  <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white" alt="Axios Badge">
 </p>
+- Laravel Framework 12.12.0
+- PHP 8.2.12
+- Google API Client for PHP 2.15.4
+- MySQL
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Penggunaan
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Mendaftar dan Login
+1.  Buka halaman login sistem Portal Akademik.
+2.  Lakukan login dengan akun Anda.
+3.  Sistem akan menampilkan halaman Dashboard E-Learning Portal Akademik setelah autentikasi berhasil.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Mengelola Kelas
+1.  Setelah login, Anda dapat melihat daftar kelas dari Google Classroom yang ditampilkan secara otomatis di Dashboard E-Learning.
+2.  Anda dapat membuat kelas baru, melihat daftar tugas, dan menambahkan tugas ke dalam kelas.
+3.  Anda juga dapat mengundang siswa ke kelas dan memantau tugas yang diserahkan.
 
-## Learning Laravel
+## Rencana Pengembangan Mendatang
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   Integrasi dengan layanan notifikasi To Do
+-   Fitur unggah gambar pendukung untuk kebutuhan
+-   Dashboard admin untuk manajemen kebutuhan
+-   Sistem pelacakan progres penyelesaian kebutuhan yang lebih detail
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## ⚙️ Instalasi
 
-### Premium Partners
+1.  **Clone Repository**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+    ```bash
+    [https://github.com/karinaaand/Intero.git](https://github.com/karinaaand/Intero.git)
+    cd Intero
+    ```
 
-## Contributing
+2.  **Instalasi Dependency**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    ```bash
+    npm install
+    ```
 
-## Code of Conduct
+    ```bash
+    composer install
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+3.  **Salin File `.env` dan Konfigurasi**
 
-## Security Vulnerabilities
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+4.  **Konfigurasi Database dan Google API**
+    Atur file `.env` Anda seperti berikut:
 
-## License
+    ```env
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    GOOGLE_CLIENT_ID=554051466577-eab3aqphgrqhup31o5rkmbnfdnitlo6c.apps.googleusercontent.com
+    GOOGLE_CLIENT_SECRET=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
+    GOOGLE_REDIRECT_URI=http://localhost:8000/api/google/callback
+    VITE_APP_NAME="${APP_NAME}"
+    VITE_API_BASE_URL=[http://127.0.0.1:8000/api](http://127.0.0.1:8000/api)
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+5.  **Migrasi Database**
+
+    ```bash
+    php artisan migrate:fresh
+    ```
+
+6.  **Jalankan FE**
+
+    ```bash
+    php artisan serve --host=localhost --port=8001
+    ```bash
+    npm run dev
+    ```
+7.  **Jalankan Server BE (pindah ke bagian cd intero_be)**
+
+    ```bash
+    php artisan serve
+    ```
+
+## 🤵 Sampel akun (untuk testing)
+
+### Akun pemilik proyek / Sample Teacher
+
+- **email** : [`theprocrastinatorman@gmail.com`](theprocrastinatorman@gmail.com)
+- **password google account** :   `andromeda445`
+- **default password lms**   :   `lavachicken`
+
+
+### Akun Sample Student
+
+- **email** : [`ibnumknd@gmail.com`](ibnumknd@gmail.com)
+- **password google account** :   `exagon.enter`
+- **default password lms**   :   `lavachicken`
+
+### Keterangan Password
+
+- **password lms** adalah password untuk akun LMS yang dibuat ketika register, bisa disesuaikan ketika melakukan regiter melalui LMS dan berlaku untuk login melalui LMS.
+
+- **password google account** adalah password akun google, yaitu akun yang terdaftar di dengan google bukan LMS.    
+
+- **Untuk lebih detailnya bisa melihat di README.md https://github.com/WahyuAgg/intero_be**
+
+## Kontak
+
+Teknologi Rekaysa Perankat Lunak, Departemen Teknik Elekro dan Informatika, Universitas Gadjah Mada.
