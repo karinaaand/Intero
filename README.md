@@ -97,6 +97,7 @@ Platform ini merupakan sistem terintegrasi yang menggabungkan layanan Google Cla
 
     ```bash
     php artisan serve --host=localhost --port=8001
+    ```
     ```bash
     npm run dev
     ```
