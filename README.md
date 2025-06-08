@@ -51,10 +51,10 @@ Platform ini merupakan sistem terintegrasi yang menggabungkan layanan Google Cla
 
 1.  **Clone Repository**
 
-    ```bash
-    [https://github.com/karinaaand/Intero.git](https://github.com/karinaaand/Intero.git)
-    cd Intero
-    ```
+   ```bash
+   git clone https://github.com/karinaaand/Intero.git
+   cd intero_be
+   ```
 
 2.  **Instalasi Dependency**
 
