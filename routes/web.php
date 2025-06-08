@@ -77,8 +77,8 @@ Route::prefix('elearning')->group(function () {
         })->name('coursework.material');
 
         // Buat guru menilai submission per assignment
-        Route::get('/grades/{courseId}', function ($courseId) {
-            return view('elearning.teacher_grades', compact('courseId'));
+        Route::get('/grades/{courseId}/{courseworkId}', function ($courseId, $courseworkId) {
+            return view('elearning.teacher_grades', compact('courseId','courseworkId'));
         })->name('grades');
 
         // invite teacher dan student , menampilkan teachers dan student

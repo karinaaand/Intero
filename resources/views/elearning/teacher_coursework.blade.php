@@ -40,10 +40,20 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             z-index: 50;
         }
+
+        .coursework-item {
+            transition: all 0.2s ease;
+        }
+
+        .coursework-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 
 <body class="bg-white text-black w-full min-h-screen flex flex-col">
+    <!-- Header section remains unchanged -->
     <header class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
         <nav class="flex items-center space-x-8 text-sm font-semibold">
             <span>LMS SATAS</span>
@@ -68,6 +78,7 @@
 
     <main class="max-w-7xl mx-auto p-6 flex-1 w-full">
         <section class="border border-gray-200 rounded-xl overflow-hidden min-h-full flex flex-col">
+            <!-- Classroom header remains unchanged -->
             <header class="flex items-center justify-between px-4 py-3 border-b border-gray-200">
                 <div class="flex items-center space-x-2 text-sm text-gray-800 font-normal">
                     <button aria-label="Menu" class="p-1 focus:outline-none">
@@ -78,9 +89,6 @@
                     <span>Google Classroom</span>
                 </div>
                 <div class="flex items-center space-x-4 text-gray-600 text-sm font-normal">
-                    {{--  <button aria-label="Add" class="p-1 hover:bg-gray-100 rounded-full">
-                        <i class="fas fa-plus"></i>
-                    </button>  --}}
                     <div aria-label="User initial" id="secondaryUserInitial"
                         class="w-8 h-8 rounded-full bg-purple-700 text-white flex items-center justify-center font-semibold text-sm">
                     </div>
@@ -88,6 +96,7 @@
             </header>
 
             <div class="flex flex-1">
+                <!-- Sidebar navigation remains unchanged -->
                 <nav class="w-44 border-r border-gray-200 bg-blue-50 rounded-bl-xl">
                     <ul class="py-2">
                         <li>
@@ -150,18 +159,7 @@
 
                 <div class="flex-1 flex flex-col">
                     <div class="flex space-x-4 p-4 border-b border-gray-200" id="navTabs">
-                        {{--  <a href="{{ route('elearning.teacher.stream') }}" class="px-6 py-2 rounded-full border border-gray-400 text-blue-900 text-sm font-normal">
-                            Stream
-                        </a>  --}}
-                        {{--  <a href="{{ route('elearning.teacher.coursework/{courseId}') }}" class="px-6 py-2 rounded-full border border-blue-400 bg-blue-300 text-gray-900 text-sm font-normal">
-                            Classwork
-                        </a>
-                        <a href="{{ route('elearning.teacher.people') }}" class="px-6 py-2 rounded-full border border-gray-400 text-gray-900 text-sm font-normal">
-                            People
-                        </a>
-                        <a href="{{ route('elearning.teacher.grades/{courseId}') }}" class="px-6 py-2 rounded-full border border-gray-400 text-gray-900 text-sm font-normal">
-                            Grades
-                        </a>  --}}
+                        <!-- Navigation tabs will be added dynamically -->
                     </div>
 
                     <div class="p-6 flex-1">
@@ -188,10 +186,12 @@
                         </div>
 
                         <div id="courseworkList">
-                            </div>
+                            <!-- Coursework items will be loaded here -->
+                        </div>
 
                         <div id="materialsList">
-                            </div>
+                            <!-- Materials will be loaded here -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -229,7 +229,7 @@
             const modal = document.getElementById('modal');
             const assignmentLink = document.getElementById('assignmentLink');
             const materialLink = document.getElementById('materialLink');
-            const navTabs = document.getElementById('navTabs'); // Pastikan navTabs ada di sini
+            const navTabs = document.getElementById('navTabs');
 
             // Get courseId from the URL
             const pathSegments = window.location.pathname.split('/');
@@ -240,14 +240,13 @@
                 e.stopPropagation();
                 modal.classList.toggle('hidden');
 
-                // Correcting the assignmentLink href
+                // Set the correct href for assignment and material links
                 assignmentLink.setAttribute('href', `/elearning/teacher/coursework/${courseId}/assignment`);
                 materialLink.setAttribute('href', `/elearning/teacher/coursework/${courseId}/material`);
             });
 
-            // button nav
+            // Navigation tabs setup
             const routes = [
-                // { name: 'Stream', url: `/elearning/teacher/stream/${courseId}`, active: false },
                 { name: 'Classwork', url: `/elearning/teacher/coursework/${courseId}`, active: true },
                 { name: 'People', url: `/elearning/teacher/people/${courseId}`, active: false },
                 { name: 'Grades', url: `/elearning/teacher/grades/${courseId}`, active: false }
@@ -264,22 +263,6 @@
                 }`;
                 navTabs.appendChild(a);
             });
-
-            // Set href attributes dynamically
-            if (assignmentLink && materialLink) {
-                assignmentLink.href = `/elearning/teacher/coursework/${courseId}/assignment`;
-                materialLink.href = `/elearning/teacher/coursework/${courseId}/material`;
-
-                assignmentLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.location.href = `/elearning/teacher/coursework/${courseId}/assignment`;
-                });
-
-                materialLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.location.href = `/elearning/teacher/coursework/${courseId}/material`;
-                });
-            }
 
             // ==================== TEACHING/ENROLLED DROPDOWNS ====================
             const teachingBtn = document.getElementById('teaching-btn');
@@ -315,7 +298,6 @@
                     }
                 });
             }
-
 
             // ==================== CLOSE DROPDOWNS WHEN CLICKING OUTSIDE ====================
             document.addEventListener('click', function(event) {
@@ -429,41 +411,36 @@
             // ==================== COURSEWORK FUNCTIONALITY ====================
             if (courseId) {
                 loadCoursework(courseId);
-                fetchMaterials(courseId); // Ini memanggil fetchMaterials
+                fetchMaterials(courseId);
             } else {
                 const courseworkList = document.getElementById('courseworkList');
                 if (courseworkList) {
                     courseworkList.innerHTML = '<div class="text-center py-8 text-gray-500">Pilih kelas untuk melihat coursework</div>';
                 }
-                 const materialsList = document.getElementById('materialsList');
+                const materialsList = document.getElementById('materialsList');
                 if (materialsList) {
-                    materialsList.innerHTML = ''; // Clear materials list if no courseId
+                    materialsList.innerHTML = '';
                 }
             }
 
-            // New function to format due date
+            // Format due date function
             function formatDueDate(dateObject) {
                 if (!dateObject) {
                     return 'No due date';
                 }
 
-                // Check if the dateObject is already a string (from backend)
                 if (typeof dateObject === 'string') {
-                    // Attempt to parse it as a Date object. If it's a valid date string, this works.
-                    // If it's something like "2024-05-30", then new Date() will parse it.
                     const date = new Date(dateObject);
-                    if (!isNaN(date)) { // Check if the date is valid
+                    if (!isNaN(date)) {
                         return date.toLocaleDateString('en-US', {
                             year: 'numeric',
                             month: 'long',
                             day: 'numeric'
                         });
                     }
-                    return dateObject; // Return as is if it's a string but not a valid date string
+                    return dateObject;
                 }
 
-
-                // If the dateObject is an object with year, month, day properties
                 if (dateObject.year && dateObject.month && dateObject.day) {
                     const date = new Date(dateObject.year, dateObject.month - 1, dateObject.day, dateObject.hour || 0, dateObject.minute || 0);
                     return date.toLocaleDateString('en-US', {
@@ -473,11 +450,10 @@
                     });
                 }
 
-                // Fallback for other unexpected object formats
                 return 'Invalid Date Format';
             }
 
-
+            // Load coursework function
             async function loadCoursework(courseId) {
                 try {
                     const token = getToken();
@@ -512,11 +488,12 @@
                 }
             }
 
+            // Render coursework with clickable items
             function renderCoursework(courseworkItems) {
                 const container = document.getElementById('courseworkList');
                 if (!container) return;
 
-                container.innerHTML = ''; // Clear existing content
+                container.innerHTML = '';
 
                 if (courseworkItems.length === 0) {
                     container.innerHTML = '<div class="text-center py-8 text-gray-500">Belum ada coursework</div>';
@@ -524,10 +501,16 @@
                 }
 
                 courseworkItems.forEach(item => {
-                    const formattedDueDate = formatDueDate(item.dueDate); // Use the new function
+                    const formattedDueDate = formatDueDate(item.dueDate);
                     const itemElement = document.createElement('div');
-                    itemElement.className = 'coursework-item mb-6 p-4 border border-gray-200 rounded-lg';
-                    itemElement.innerHTML = `
+                    itemElement.className = 'coursework-item mb-6 p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50';
+
+                    // Create a link element for the coursework item
+                    const linkElement = document.createElement('a');
+                    linkElement.href = `/elearning/teacher/grades/${courseId}/${item.id}`;
+                    linkElement.className = 'block';
+
+                    linkElement.innerHTML = `
                         <h3 class="font-semibold text-lg mb-2">${item.title}</h3>
                         <p class="text-gray-600 mb-3">${item.description || 'Tidak ada deskripsi'}</p>
                         <div class="flex justify-between text-sm text-gray-500">
@@ -535,13 +518,13 @@
                             <span>Status: ${item.status || 'Not submitted'}</span>
                         </div>
                     `;
+
+                    itemElement.appendChild(linkElement);
                     container.appendChild(itemElement);
                 });
             }
 
-            // ==================== INITIALIZATION ====================
-            fetchUserData();
-
+            // ==================== MATERIALS FUNCTIONALITY ====================
             async function fetchMaterials(courseId) {
                 try {
                     const token = getToken();
@@ -577,28 +560,43 @@
             }
 
             function renderMaterials(materialItems) {
-                const container = document.getElementById('materialsList');
-                if (!container) return;
+    const container = document.getElementById('materialsList');
+    if (!container) return;
 
-                container.innerHTML = '';
+    container.innerHTML = '';
 
-                if (!Array.isArray(materialItems) || materialItems.length === 0) {
-                    container.innerHTML = '<div class="text-center py-8 text-gray-500">Belum ada materi</div>';
-                    return;
-                }
+    if (!Array.isArray(materialItems) || materialItems.length === 0) {
+        container.innerHTML = '<div class="text-center py-8 text-gray-500">Belum ada materi</div>';
+        return;
+    }
 
-                materialItems.forEach(item => {
-                    const itemElement = document.createElement('div');
-                    itemElement.className = 'material-item mb-6 p-4 border border-gray-200 rounded-lg';
-                    itemElement.innerHTML = `
-                        <h3 class="font-semibold text-lg mb-2">${item.title}</h3>
-                        <p class="text-gray-600 mb-3">${item.description || 'Tidak ada deskripsi'}</p>
-                        <a href="${item.link}" target="_blank" class="text-blue-600 hover:underline">Buka Materi</a>
-                    `;
-                    container.appendChild(itemElement);
-                });
+    materialItems.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.className = 'material-item mb-6 p-4 border border-gray-200 rounded-lg';
+
+        // Extract URL from description if it exists
+        const urlPattern = /(https?:\/\/[^\s]+)/g;
+        const description = item.description || '';
+        const urls = description.match(urlPattern);
+        const firstUrl = urls ? urls[0] : null;
+
+        // Clean description by removing URLs (optional)
+        const cleanDescription = description.replace(urlPattern, '').trim() || 'Tidak ada deskripsi';
+
+        itemElement.innerHTML = `
+            <h3 class="font-semibold text-lg mb-2">${item.title}</h3>
+            <p class="text-gray-600 mb-3">${cleanDescription}</p>
+            ${firstUrl ?
+                `<a href="${firstUrl}" target="_blank" class="text-blue-600 hover:underline">Buka Materi</a>` :
+                `<span class="text-gray-500">Tidak ada link materi</span>`
             }
+        `;
+        container.appendChild(itemElement);
+    });
+}
 
+            // ==================== INITIALIZATION ====================
+            fetchUserData();
 
             // Refresh token button
             const refreshTokenBtn = document.getElementById('refreshTokenBtn');
