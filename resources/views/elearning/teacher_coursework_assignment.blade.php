@@ -98,6 +98,14 @@
         document.addEventListener('DOMContentLoaded', function() {
             const loginUrl = "{{ route('elearning.login') }}";
             const postBtn = document.getElementById('postAssignmentBtn');
+            const assignmentDueDateInput = document.getElementById('assignmentDueDate');
+
+            // Set the default value for due date to today's date
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+            const day = String(today.getDate()).padStart(2, '0');
+            assignmentDueDateInput.value = `${year}-${month}-${day}`;
 
             if (postBtn) {
                 postBtn.addEventListener('click', createAssignment);
@@ -189,17 +197,23 @@
             const description = document.getElementById('assignmentLink').value;
             const forClass = document.getElementById('assignmentFor').value;
             const points = document.getElementById('assignmentPoints').value;
-            const dueDate = document.getElementById('assignmentDueDate').value;
-            const [year, month, day] = dueDate.split('-').map(Number);
+            const dueDate = document.getElementById('assignmentDueDate').value; // This is already YYYY-MM-DD string
 
-            // Idescriptionnput validation
+            // Input validation
             if (!title) {
-                alert('Judul materi harus diisi');
+                alert('Judul assignment harus diisi');
+                return;
+            }
+            if (!dueDate) {
+                alert('Tanggal jatuh tempo harus diisi');
                 return;
             }
 
+            // Split the dueDate string into year, month, and day
+            const [year, month, day] = dueDate.split('-').map(Number);
+
             try {
-               const payload = {
+                const payload = {
                     title: title,
                     description: description, // Required
                     for: forClass,
@@ -207,10 +221,10 @@
                     due_year: year,
                     due_month: month,
                     due_day: day,
-                    due_hour: 23,
-                    due_minute: 59
-                };
-  console.log(dueDate);
+                    due_hour: 23, // Default to 23:59
+                    due_minute: 59 // Default to 23:59
+                };
+                console.log(dueDate);
 
                 console.log("Sending payload:", payload);
 
@@ -221,7 +235,7 @@
                     }
                 });
 
-                alert("Materi berhasil dibuat!");
+                alert("Assignment berhasil dibuat!");
                 window.location.href = `/elearning/teacher/coursework/${courseId}`;
             } catch (error) {
                 console.error('Error creating assignment:', error);

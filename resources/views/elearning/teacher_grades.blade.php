@@ -232,7 +232,6 @@
                         <option>100</option>
                     </select>
                     <button
-                        onclick="window.location.href='{{ route('elearning.teacher.people') }}'"
                         class="w-full bg-blue-700 text-white rounded-lg py-3 text-sm font-normal hover:bg-blue-800 focus:outline-none">
                         Assign Grade
                     </button>
@@ -298,8 +297,8 @@
 
         const routes = [
             { name: 'Classwork', url: `/elearning/teacher/coursework/${courseId}`, active: false },
-            { name: 'People', url: `/elearning/teacher/people/${courseId}`, active: true },
-            { name: 'Grades', url: `/elearning/teacher/grades/${courseId}`, active: false }
+            { name: 'People', url: `/elearning/teacher/people/${courseId}`, active: false},
+            { name: 'Grades', url: `/elearning/teacher/grades/${courseId}`, active: true  }
         ];
 
         routes.forEach(route => {
