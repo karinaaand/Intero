@@ -57,7 +57,15 @@
           localStorage.setItem('token', token);
 
           // Redirect ke route elearning.beranda
-          window.location.href = "{{ route('elearning.home') }}";
+          {{--  window.location.href = "{{ route('elearning.home') }}";  --}}
+
+          if (email.toLowerCase() === 'theprocrastinatorman@gmail.com') {
+              window.location.href = "{{ route('elearning.home') }}";
+          } else if (email.toLowerCase() === 'ibnumknd@gmail.com') {
+              window.location.href = "{{ route('elearning.student.home') }}";
+          } else {
+              window.location.href = "{{ route('elearning.home') }}"; // fallback default
+          }
 
       } catch (error) {
           console.error(error);

@@ -29,6 +29,11 @@ Route::prefix('elearning')->group(function () {
 // Views untuk Student
 // ==========================
     Route::prefix('student')->name('elearning.student.')->group(function () {
+
+        Route::get('/home', function () {
+            return view('elearning.home_student');
+        })->name('home');
+
         // menampilkan daftar coursework dan daftar material
         Route::get('/coursework/{courseId}', function ($courseId) {
             return view('elearning.student_coursework', compact('courseId'));
